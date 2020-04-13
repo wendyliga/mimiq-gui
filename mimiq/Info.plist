@@ -30,7 +30,7 @@
 	<true/>
 	<key>NSSupportsSuddenTermination</key>
 	<true/>
-    <key>LSUIElement</key>
-    <string>1</string>
+	<key>LSUIElement</key>
+	<string>NO</string>
 </dict>
 </plist>

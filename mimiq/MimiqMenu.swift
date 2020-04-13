@@ -172,11 +172,8 @@ final class MimiqMenu: NSMenu {
     
     @objc
     func openPreferences() {
-        let alert = NSAlert()
-        alert.messageText = "Test Message"
-        alert.informativeText = "Test Informative"
-        alert.addButton(withTitle: "OK")
-        alert.runModal()
+        let window = PreferencesWindowController()
+        window.showWindow(NSApp)
     }
     
     @objc

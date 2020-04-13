@@ -19,5 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusBarItem.button?.image = NSImage(named: "status_icon")
         statusBarItem.button?.imagePosition = .imageLeft
         statusBarItem.menu = menu
+        
+        NSApp.setActivationPolicy(.accessory)
     }
 }
