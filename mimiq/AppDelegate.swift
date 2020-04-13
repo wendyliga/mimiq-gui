@@ -7,20 +7,17 @@
 //
 
 import Cocoa
+import SwiftKit
 
-@NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-
-
+    var statusBarItem: NSStatusItem!
+    lazy var menu = MimiqMenu(statusItem: statusBarItem)
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        let statusBar = NSStatusBar.system
+        statusBarItem = statusBar.statusItem(withLength: NSStatusItem.variableLength)
+        statusBarItem.button?.image = NSImage(named: "status_icon")
+        statusBarItem.button?.imagePosition = .imageLeft
+        statusBarItem.menu = menu
     }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
-
-
 }
-

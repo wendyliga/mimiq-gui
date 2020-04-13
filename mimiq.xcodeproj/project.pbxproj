@@ -3,24 +3,29 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		860F598C24438B35003722B3 /* MimiqMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860F598B24438B35003722B3 /* MimiqMenu.swift */; };
+		8690C2FB2443606C005B671E /* SwiftKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8690C2FA2443606C005B671E /* SwiftKit */; };
 		86A74A2D24423C74003F3C68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A74A2C24423C74003F3C68 /* AppDelegate.swift */; };
-		86A74A2F24423C74003F3C68 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A74A2E24423C74003F3C68 /* ViewController.swift */; };
 		86A74A3124423C76003F3C68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86A74A3024423C76003F3C68 /* Assets.xcassets */; };
-		86A74A3424423C76003F3C68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86A74A3224423C76003F3C68 /* Main.storyboard */; };
+		86C0CF1224438FC80052D963 /* MimiqProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0CF1124438FC80052D963 /* MimiqProcess.swift */; };
+		86C0CF1424439A2D0052D963 /* mimiq in Resources */ = {isa = PBXBuildFile; fileRef = 86C0CF1324439A2D0052D963 /* mimiq */; };
+		86F2EB36244302E40026C0D5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2EB35244302E40026C0D5 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		860F598B24438B35003722B3 /* MimiqMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MimiqMenu.swift; sourceTree = "<group>"; };
 		86A74A2924423C74003F3C68 /* mimiq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mimiq.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86A74A2C24423C74003F3C68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		86A74A2E24423C74003F3C68 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		86A74A3024423C76003F3C68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		86A74A3324423C76003F3C68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		86A74A3524423C76003F3C68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		86A74A3624423C76003F3C68 /* mimiq.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mimiq.entitlements; sourceTree = "<group>"; };
+		86C0CF1124438FC80052D963 /* MimiqProcess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MimiqProcess.swift; sourceTree = "<group>"; };
+		86C0CF1324439A2D0052D963 /* mimiq */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = mimiq; sourceTree = "<group>"; };
+		86F2EB35244302E40026C0D5 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8690C2FB2443606C005B671E /* SwiftKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,12 +59,14 @@
 		86A74A2B24423C74003F3C68 /* mimiq */ = {
 			isa = PBXGroup;
 			children = (
+				86C0CF1324439A2D0052D963 /* mimiq */,
+				86C0CF1124438FC80052D963 /* MimiqProcess.swift */,
+				860F598B24438B35003722B3 /* MimiqMenu.swift */,
 				86A74A2C24423C74003F3C68 /* AppDelegate.swift */,
-				86A74A2E24423C74003F3C68 /* ViewController.swift */,
 				86A74A3024423C76003F3C68 /* Assets.xcassets */,
-				86A74A3224423C76003F3C68 /* Main.storyboard */,
 				86A74A3524423C76003F3C68 /* Info.plist */,
 				86A74A3624423C76003F3C68 /* mimiq.entitlements */,
+				86F2EB35244302E40026C0D5 /* main.swift */,
 			);
 			path = mimiq;
 			sourceTree = "<group>";
@@ -79,6 +87,9 @@
 			dependencies = (
 			);
 			name = mimiq;
+			packageProductDependencies = (
+				8690C2FA2443606C005B671E /* SwiftKit */,
+			);
 			productName = mimiq;
 			productReference = 86A74A2924423C74003F3C68 /* mimiq.app */;
 			productType = "com.apple.product-type.application";
@@ -107,6 +118,9 @@
 				Base,
 			);
 			mainGroup = 86A74A2024423C74003F3C68;
+			packageReferences = (
+				8690C2F92443606C005B671E /* XCRemoteSwiftPackageReference "swiftkit" */,
+			);
 			productRefGroup = 86A74A2A24423C74003F3C68 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -121,8 +135,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86C0CF1424439A2D0052D963 /* mimiq in Resources */,
 				86A74A3124423C76003F3C68 /* Assets.xcassets in Resources */,
-				86A74A3424423C76003F3C68 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,23 +147,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86A74A2F24423C74003F3C68 /* ViewController.swift in Sources */,
+				860F598C24438B35003722B3 /* MimiqMenu.swift in Sources */,
+				86C0CF1224438FC80052D963 /* MimiqProcess.swift in Sources */,
 				86A74A2D24423C74003F3C68 /* AppDelegate.swift in Sources */,
+				86F2EB36244302E40026C0D5 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		86A74A3224423C76003F3C68 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				86A74A3324423C76003F3C68 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		86A74A3724423C76003F3C68 /* Debug */ = {
@@ -327,6 +332,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8690C2F92443606C005B671E /* XCRemoteSwiftPackageReference "swiftkit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/wendyliga/swiftkit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8690C2FA2443606C005B671E /* SwiftKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8690C2F92443606C005B671E /* XCRemoteSwiftPackageReference "swiftkit" */;
+			productName = SwiftKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 86A74A2124423C74003F3C68 /* Project object */;
 }
