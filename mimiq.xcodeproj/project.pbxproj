@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		860F598C24438B35003722B3 /* MimiqMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860F598B24438B35003722B3 /* MimiqMenu.swift */; };
 		868730EA24461226003620C9 /* mimiq in Resources */ = {isa = PBXBuildFile; fileRef = 868730E924461226003620C9 /* mimiq */; };
+		868730F924461911003620C9 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 868730F724461907003620C9 /* Sparkle.framework */; };
+		868730FA24461911003620C9 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 868730F724461907003620C9 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		868730FF2446257E003620C9 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868730FE2446257E003620C9 /* UserDefaultsKey.swift */; };
 		8690C2FB2443606C005B671E /* SwiftKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8690C2FA2443606C005B671E /* SwiftKit */; };
 		86A74A2D24423C74003F3C68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A74A2C24423C74003F3C68 /* AppDelegate.swift */; };
 		86A74A3124423C76003F3C68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86A74A3024423C76003F3C68 /* Assets.xcassets */; };
@@ -20,9 +23,25 @@
 		86F2EB36244302E40026C0D5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2EB35244302E40026C0D5 /* main.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		868730FB24461911003620C9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				868730FA24461911003620C9 /* Sparkle.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		860F598B24438B35003722B3 /* MimiqMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MimiqMenu.swift; sourceTree = "<group>"; };
-		868730E924461226003620C9 /* mimiq */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = mimiq; sourceTree = "<group>"; };
+		868730E924461226003620C9 /* mimiq */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = mimiq; path = mimiq/mimiq; sourceTree = "<group>"; };
+		868730F724461907003620C9 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		868730FE2446257E003620C9 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		86A74A2924423C74003F3C68 /* mimiq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mimiq.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86A74A2C24423C74003F3C68 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86A74A3024423C76003F3C68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -42,17 +61,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				8690C2FB2443606C005B671E /* SwiftKit in Frameworks */,
+				868730F924461911003620C9 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		868730F6244618F8003620C9 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				868730E924461226003620C9 /* mimiq */,
+				868730F724461907003620C9 /* Sparkle.framework */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
 		86A74A2024423C74003F3C68 = {
 			isa = PBXGroup;
 			children = (
 				86A74A2B24423C74003F3C68 /* mimiq */,
 				86A74A2A24423C74003F3C68 /* Products */,
+				868730F6244618F8003620C9 /* Framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,7 +97,6 @@
 		86A74A2B24423C74003F3C68 /* mimiq */ = {
 			isa = PBXGroup;
 			children = (
-				868730E924461226003620C9 /* mimiq */,
 				86C0CF1124438FC80052D963 /* MimiqProcess.swift */,
 				860F598B24438B35003722B3 /* MimiqMenu.swift */,
 				86BF3A1E2444B5AB007DBE15 /* GeneralViewController.swift */,
@@ -79,6 +108,7 @@
 				86A74A3624423C76003F3C68 /* mimiq.entitlements */,
 				86F2EB35244302E40026C0D5 /* main.swift */,
 				86BF3A202444BFDE007DBE15 /* NSImage+Extension.swift */,
+				868730FE2446257E003620C9 /* UserDefaultsKey.swift */,
 			);
 			path = mimiq;
 			sourceTree = "<group>";
@@ -93,6 +123,7 @@
 				86A74A2524423C74003F3C68 /* Sources */,
 				86A74A2624423C74003F3C68 /* Frameworks */,
 				86A74A2724423C74003F3C68 /* Resources */,
+				868730FB24461911003620C9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -166,6 +197,7 @@
 				86C0CF1224438FC80052D963 /* MimiqProcess.swift in Sources */,
 				86A74A2D24423C74003F3C68 /* AppDelegate.swift in Sources */,
 				86BF3A212444BFDE007DBE15 /* NSImage+Extension.swift in Sources */,
+				868730FF2446257E003620C9 /* UserDefaultsKey.swift in Sources */,
 				86F2EB36244302E40026C0D5 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,6 +328,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4B2X382W7X;
 				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = mimiq/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -317,6 +353,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4B2X382W7X;
 				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = mimiq/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Sparkle
 
 final class MimiqMenu: NSMenu {
     enum SimulatorPlaceholderState {
@@ -92,6 +93,15 @@ final class MimiqMenu: NSMenu {
         return item
     }()
     
+    lazy var checkForUpdateItem: NSMenuItem = { [weak self] in
+        let item = NSMenuItem()
+        item.title = "Check for Update"
+        item.action = #selector(checkForUpdate)
+        item.target = self
+        
+        return item
+    }()
+    
     lazy var exitMenuItem: NSMenuItem = { [weak self] in
         let item = NSMenuItem()
         item.title = "Quit"
@@ -109,9 +119,10 @@ final class MimiqMenu: NSMenu {
                    simulatorPlaceholderChildMenuItem]
     
     lazy var bottomMenu = [NSMenuItem.separator(),
-                      preferencesMenuItem,
-                      NSMenuItem.separator(),
-                      exitMenuItem]
+                           checkForUpdateItem,
+                           preferencesMenuItem,
+                           NSMenuItem.separator(),
+                           exitMenuItem]
     
     /**
      All Menu Item
@@ -186,6 +197,12 @@ final class MimiqMenu: NSMenu {
     func openPreferences() {
         let window = PreferencesWindowController()
         window.showWindow(NSApp)
+    }
+    
+    @objc
+    func checkForUpdate() {
+        let updater = SUUpdater()
+        updater.checkForUpdateInformation()
     }
     
     @objc

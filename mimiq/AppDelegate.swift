@@ -29,6 +29,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         NSApp.setActivationPolicy(.accessory)
         populateMainMenu()
+        
+        if UserDefaults.standard.bool(forKey: UserDefaultsKey.didSetupDefaultValue.rawValue) == false {
+            // set default value
+            UserDefaults.standard.set(true, forKey: UserDefaultsKey.startOnLogin.rawValue)
+            UserDefaults.standard.set(true, forKey: UserDefaultsKey.didSetupDefaultValue.rawValue)
+        }
     }
     
     func populateMainMenu() {

@@ -17,11 +17,15 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.0.1</string>
+	<string>1.0.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.developer-tools</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
+	<key>LSUIElement</key>
+	<string>NO</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2020 Wendy Liga. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
@@ -30,7 +34,9 @@
 	<true/>
 	<key>NSSupportsSuddenTermination</key>
 	<true/>
-	<key>LSUIElement</key>
-	<string>NO</string>
+	<key>SUFeedURL</key>
+	<string>https://mimiq.wendyliga.com/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>Oz8JDuh1AU1AUK148ANJP5S4bP+chuOk29yb8XuT9a4=</string>
 </dict>
 </plist>
