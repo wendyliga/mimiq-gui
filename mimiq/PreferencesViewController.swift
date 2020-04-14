@@ -40,8 +40,12 @@ final class PreferencesTabViewController: NSTabViewController {
         super.init(nibName: nil, bundle: nil)
         
         tabStyle = .toolbar
-        addTabViewItem(NSTabViewItem(viewController: GeneralViewController()))
-        addTabViewItem(NSTabViewItem(viewController: AboutViewController()))
+        let generalItem = NSTabViewItem(viewController: GeneralViewController())
+        let aboutItem = NSTabViewItem(viewController: AboutViewController())
+        aboutItem.image = NSImage(named: "AppIcon")
+        
+        addTabViewItem(generalItem)
+        addTabViewItem(aboutItem)
         
         selectedTabViewItemIndex = 1
     }

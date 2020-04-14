@@ -10,26 +10,32 @@ import Cocoa
 
 final class GeneralViewController: NSViewController {
     
-    let textField = NSTextField()
+    let titleText: NSTextField = {
+        let view = NSTextField()
+        view.isBezeled = false
+        view.drawsBackground = false
+        view.isEditable = false
+        view.isSelectable = false
+        view.stringValue = "Mimiq"
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.font = NSFont.systemFont(ofSize: 28, weight: .bold)
+        
+        return view
+    }()
     
     init() {
         super.init(nibName: nil, bundle: nil)
         
         title = "General"
-//        titleText.string = "General"
-//        textField.isBezeled = false
-//        textField.drawsBackground = false
-//        textField.isEditable = false
-//        textField.isSelectable = false
-//        textField.stringValue = "General"
         
-//        view.addSubview(titleText)
-//        titleText.translatesAutoresizingMaskIntoConstraints = false
-//        
-//        NSLayoutConstraint.activate([
-//            titleText.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            titleText.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-//        ])
+        view.addSubview(titleText)
+        
+        NSLayoutConstraint.activate([
+            titleText.leadingAnchor.constraint(equalTo: view.trailingAnchor),
+            titleText.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            titleText.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            titleText.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+        ])
     }
     
     required init?(coder: NSCoder) {
