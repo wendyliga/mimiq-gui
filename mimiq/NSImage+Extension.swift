@@ -42,4 +42,19 @@ extension NSImage {
         
         return targetImage
     }
+    
+    /// https://stackoverflow.com/a/50074538/5901378
+    func tint(color: NSColor) -> NSImage {
+        let image = self.copy() as! NSImage
+        image.lockFocus()
+
+        color.set()
+
+        let imageRect = NSRect(origin: NSZeroPoint, size: image.size)
+        imageRect.fill(using: .sourceAtop)
+
+        image.unlockFocus()
+
+        return image
+    }
 }

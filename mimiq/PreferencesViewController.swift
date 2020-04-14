@@ -42,12 +42,15 @@ final class PreferencesTabViewController: NSTabViewController {
         tabStyle = .toolbar
         let generalItem = NSTabViewItem(viewController: GeneralViewController())
         let aboutItem = NSTabViewItem(viewController: AboutViewController())
-        aboutItem.image = NSImage(named: "AppIcon")
+        
+        let isDarkMode = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark"
+        let itemTintColor = isDarkMode ? NSColor.white : NSColor.black
+        
+        generalItem.image = NSImage(named: "weekend")?.tint(color: itemTintColor)
+        aboutItem.image = NSImage(named: "love")?.tint(color: itemTintColor)
         
         addTabViewItem(generalItem)
         addTabViewItem(aboutItem)
-        
-        selectedTabViewItemIndex = 1
     }
     
     required init?(coder: NSCoder) {
