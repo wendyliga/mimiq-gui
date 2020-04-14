@@ -165,8 +165,20 @@ final class MimiqMenu: NSMenu {
     func stopRecord(_ sender: NSMenuItem) {
         mimiqRecordProcess.stopRecord(beforeSendInteruption: {
             recordingState(.processing)
-        }) { [weak self] (terminationCode, ouput, errorOuput) in
-            self?.recordingState(.none)
+        }) { [weak self] (terminationCode, ouput, errorOutput) in
+            defer {
+                self?.recordingState(.none)
+            }
+            
+            guard let errorOutput = errorOutput, terminationCode == 1 else {
+                return
+            }
+            
+            let alert = NSAlert()
+            alert.messageText = "Failed to record, mimiq process fail with error"
+            alert.informativeText = errorOutput
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
         }
     }
     
