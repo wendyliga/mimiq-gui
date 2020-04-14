@@ -54,7 +54,7 @@ final class MimiqRecordProcess {
     
     func startRecord(_ udid: String) {
         initProcess()
-        process?.arguments = ["--udid", udid]
+        process?.arguments = ["--udid", udid, "--path", UserDefaults.standard.string(forKey: "generate_gif_path") ?? "~/Desktop"]
         process?.launch()
     }
     
