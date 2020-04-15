@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Sparkle
 import SwiftKit
 import ServiceManagement
 
@@ -39,7 +40,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             // set default value
             UserDefaults.standard.set(true, forKey: UserDefaultsKey.startOnLogin.rawValue)
             UserDefaults.standard.set(true, forKey: UserDefaultsKey.didSetupDefaultValue.rawValue)
+            
+            let updater = SUUpdater()
+            updater.automaticallyChecksForUpdates = false
+            updater.automaticallyDownloadsUpdates = false
         }
+        
+        // sync check for update value from `SUUpdater`
+        UserDefaults.standard.set(SUUpdater().automaticallyChecksForUpdates, forKey: UserDefaultsKey.automaticCheckForUpdate.rawValue)
         
         if UserDefaults.standard.bool(forKey: UserDefaultsKey.startOnLogin.rawValue) {
             // set auto launch on login

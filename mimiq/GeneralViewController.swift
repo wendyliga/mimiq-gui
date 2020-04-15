@@ -196,10 +196,8 @@ final class GeneralViewController: NSViewController {
         value.toggle()
         UserDefaults.standard.set(value, forKey: UserDefaultsKey.startOnLogin.rawValue)
         
-        if UserDefaults.standard.bool(forKey: UserDefaultsKey.startOnLogin.rawValue) {
-            // set auto launch on login
-            SMLoginItemSetEnabled("com.wendyliga.mimiqHelper" as CFString, true)
-        }
+        // set auto launch on login
+        SMLoginItemSetEnabled("com.wendyliga.mimiqHelper" as CFString, UserDefaults.standard.bool(forKey: UserDefaultsKey.startOnLogin.rawValue))
     }
     
     @objc
