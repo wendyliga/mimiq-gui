@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		860F598C24438B35003722B3 /* MimiqMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860F598B24438B35003722B3 /* MimiqMenu.swift */; };
+		86435AE4244765F500B66AC0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86435AE3244765F500B66AC0 /* main.swift */; };
 		868730F924461911003620C9 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 868730F724461907003620C9 /* Sparkle.framework */; };
 		868730FA24461911003620C9 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 868730F724461907003620C9 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		868730FF2446257E003620C9 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868730FE2446257E003620C9 /* UserDefaultsKey.swift */; };
@@ -16,17 +17,35 @@
 		86A74A3124423C76003F3C68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86A74A3024423C76003F3C68 /* Assets.xcassets */; };
 		86ADFC072447550A0042A8B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ADFC062447550A0042A8B4 /* AppDelegate.swift */; };
 		86ADFC092447550B0042A8B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86ADFC082447550B0042A8B4 /* Assets.xcassets */; };
-		86ADFC132447555E0042A8B4 /* mimiqHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 86ADFC042447550A0042A8B4 /* mimiqHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		86ADFC14244756880042A8B4 /* mimiqHelper.app in Resources */ = {isa = PBXBuildFile; fileRef = 86ADFC042447550A0042A8B4 /* mimiqHelper.app */; };
 		86BF3A1D2444B59A007DBE15 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BF3A1C2444B59A007DBE15 /* AboutViewController.swift */; };
 		86BF3A1F2444B5AB007DBE15 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BF3A1E2444B5AB007DBE15 /* GeneralViewController.swift */; };
 		86BF3A212444BFDE007DBE15 /* NSImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BF3A202444BFDE007DBE15 /* NSImage+Extension.swift */; };
 		86C0CF1224438FC80052D963 /* MimiqProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0CF1124438FC80052D963 /* MimiqProcess.swift */; };
 		86C0CF16244452230052D963 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0CF15244452230052D963 /* PreferencesViewController.swift */; };
+		86CD6D4B244756F00021AA7D /* mimiqHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 86ADFC042447550A0042A8B4 /* mimiqHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		86E76CC2244728D200A36360 /* ffmpeg in Resources */ = {isa = PBXBuildFile; fileRef = 86E76CC1244728D200A36360 /* ffmpeg */; };
 		86E76CC42447291000A36360 /* mimiq in Resources */ = {isa = PBXBuildFile; fileRef = 86E76CC32447291000A36360 /* mimiq */; };
 		86E76CDE24472DD400A36360 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E76CDC24472DCF00A36360 /* ServiceManagement.framework */; };
 		86F2EB36244302E40026C0D5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2EB35244302E40026C0D5 /* main.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		86ADFC15244756880042A8B4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 86A74A2124423C74003F3C68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 86ADFC032447550A0042A8B4;
+			remoteInfo = mimiqHelper;
+		};
+		86ADFC17244756900042A8B4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 86A74A2124423C74003F3C68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 86ADFC032447550A0042A8B4;
+			remoteInfo = mimiqHelper;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		868730FB24461911003620C9 /* Embed Frameworks */ = {
@@ -40,22 +59,13 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		86ADFC12244755550042A8B4 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = Contents/Library/LoginItems;
-			dstSubfolderSpec = 1;
-			files = (
-				86ADFC132447555E0042A8B4 /* mimiqHelper.app in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		86E76CD924472D9B00A36360 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = Contents/Library/LoginItems;
 			dstSubfolderSpec = 1;
 			files = (
+				86CD6D4B244756F00021AA7D /* mimiqHelper.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +73,7 @@
 
 /* Begin PBXFileReference section */
 		860F598B24438B35003722B3 /* MimiqMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MimiqMenu.swift; sourceTree = "<group>"; };
+		86435AE3244765F500B66AC0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		868730F724461907003620C9 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		868730FE2446257E003620C9 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		86A74A2924423C74003F3C68 /* mimiq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mimiq.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +174,7 @@
 				86ADFC082447550B0042A8B4 /* Assets.xcassets */,
 				86ADFC0D2447550B0042A8B4 /* Info.plist */,
 				86ADFC0E2447550B0042A8B4 /* mimiqHelper.entitlements */,
+				86435AE3244765F500B66AC0 /* main.swift */,
 			);
 			path = mimiqHelper;
 			sourceTree = "<group>";
@@ -191,6 +203,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				86ADFC16244756880042A8B4 /* PBXTargetDependency */,
+				86ADFC18244756900042A8B4 /* PBXTargetDependency */,
 			);
 			name = mimiq;
 			packageProductDependencies = (
@@ -207,7 +221,6 @@
 				86ADFC002447550A0042A8B4 /* Sources */,
 				86ADFC012447550A0042A8B4 /* Frameworks */,
 				86ADFC022447550A0042A8B4 /* Resources */,
-				86ADFC12244755550042A8B4 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -266,6 +279,7 @@
 				86E76CC2244728D200A36360 /* ffmpeg in Resources */,
 				86E76CC42447291000A36360 /* mimiq in Resources */,
 				86A74A3124423C76003F3C68 /* Assets.xcassets in Resources */,
+				86ADFC14244756880042A8B4 /* mimiqHelper.app in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,11 +314,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86435AE4244765F500B66AC0 /* main.swift in Sources */,
 				86ADFC072447550A0042A8B4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		86ADFC16244756880042A8B4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 86ADFC032447550A0042A8B4 /* mimiqHelper */;
+			targetProxy = 86ADFC15244756880042A8B4 /* PBXContainerItemProxy */;
+		};
+		86ADFC18244756900042A8B4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 86ADFC032447550A0042A8B4 /* mimiqHelper */;
+			targetProxy = 86ADFC17244756900042A8B4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		86A74A3724423C76003F3C68 /* Debug */ = {
@@ -429,7 +457,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4B2X382W7X;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -455,7 +483,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4B2X382W7X;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -475,12 +503,11 @@
 		86ADFC102447550B0042A8B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = mimiqHelper/mimiqHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4B2X382W7X;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = mimiqHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -496,12 +523,11 @@
 		86ADFC112447550B0042A8B4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = mimiqHelper/mimiqHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 4B2X382W7X;
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = mimiqHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

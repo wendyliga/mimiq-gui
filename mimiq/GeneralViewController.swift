@@ -8,6 +8,7 @@
 
 import Cocoa
 import Sparkle
+import ServiceManagement
 
 final class GeneralViewController: NSViewController {
     
@@ -194,6 +195,11 @@ final class GeneralViewController: NSViewController {
         var value = UserDefaults.standard.bool(forKey: UserDefaultsKey.startOnLogin.rawValue)
         value.toggle()
         UserDefaults.standard.set(value, forKey: UserDefaultsKey.startOnLogin.rawValue)
+        
+        if UserDefaults.standard.bool(forKey: UserDefaultsKey.startOnLogin.rawValue) {
+            // set auto launch on login
+            SMLoginItemSetEnabled("com.wendyliga.mimiqHelper" as CFString, true)
+        }
     }
     
     @objc

@@ -8,7 +8,6 @@
 
 import Cocoa
 import SwiftKit
-
 import ServiceManagement
 
 extension Notification.Name {
@@ -42,14 +41,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             UserDefaults.standard.set(true, forKey: UserDefaultsKey.didSetupDefaultValue.rawValue)
         }
         
-        let launcherAppId = "com.wendyliga.mimiqHelper"
-        let runningApps = NSWorkspace.shared.runningApplications
-        let isRunning = !runningApps.filter { $0.bundleIdentifier == launcherAppId }.isEmpty
-
-        SMLoginItemSetEnabled(launcherAppId as CFString, true)
-
-        if isRunning {
-            DistributedNotificationCenter.default().post(name: .killLauncher, object: Bundle.main.bundleIdentifier!)
+        if UserDefaults.standard.bool(forKey: UserDefaultsKey.startOnLogin.rawValue) {
+            // set auto launch on login
+            SMLoginItemSetEnabled("com.wendyliga.mimiqHelper" as CFString, true)
         }
     }
     
