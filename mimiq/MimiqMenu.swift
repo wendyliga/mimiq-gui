@@ -202,7 +202,7 @@ final class MimiqMenu: NSMenu {
     @objc
     func checkForUpdate() {
         let updater = SUUpdater()
-        updater.checkForUpdateInformation()
+        updater.checkForUpdates(self)
     }
     
     @objc

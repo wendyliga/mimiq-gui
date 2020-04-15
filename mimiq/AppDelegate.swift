@@ -9,6 +9,12 @@
 import Cocoa
 import SwiftKit
 
+import ServiceManagement
+
+extension Notification.Name {
+    static let killLauncher = Notification.Name("kill_launcher")
+}
+
 class AppDelegate: NSObject, NSApplicationDelegate {
     var statusBarItem: NSStatusItem!
     
@@ -34,6 +40,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             // set default value
             UserDefaults.standard.set(true, forKey: UserDefaultsKey.startOnLogin.rawValue)
             UserDefaults.standard.set(true, forKey: UserDefaultsKey.didSetupDefaultValue.rawValue)
+        }
+        
+        let launcherAppId = "com.wendyliga.mimiqHelper"
+        let runningApps = NSWorkspace.shared.runningApplications
+        let isRunning = !runningApps.filter { $0.bundleIdentifier == launcherAppId }.isEmpty
+
+        SMLoginItemSetEnabled(launcherAppId as CFString, true)
+
+        if isRunning {
+            DistributedNotificationCenter.default().post(name: .killLauncher, object: Bundle.main.bundleIdentifier!)
         }
     }
     

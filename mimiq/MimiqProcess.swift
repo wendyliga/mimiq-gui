@@ -54,7 +54,12 @@ final class MimiqRecordProcess {
     
     func startRecord(_ udid: String) {
         initProcess()
-        process?.arguments = ["--udid", udid, "--path", UserDefaults.standard.string(forKey: "generate_gif_path") ?? "~/Desktop"]
+        
+        guard let ffmpegPath = Bundle.main.resourcePath else {
+            fatalError("Unable to find bundle resource path")
+        }
+        
+        process?.arguments = ["--udid", udid, "--path", UserDefaults.standard.string(forKey: "generate_gif_path") ?? "~/Desktop", "--custom-ffmpeg", ffmpegPath]
         process?.launch()
     }
     
