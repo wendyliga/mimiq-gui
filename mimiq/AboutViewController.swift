@@ -49,6 +49,18 @@ final class AboutViewController: NSViewController {
         return view
     }()
     
+    let mimiqEngineVersionText: NSTextField = {
+        let view = NSTextField()
+        view.isBezeled = false
+        view.drawsBackground = false
+        view.isEditable = false
+        view.isSelectable = false
+        view.stringValue = "Mimiq Engine version 0.3.7"
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
     let mimiqDescriptionText: NSTextField = {
         let view = NSTextField()
         view.isBezeled = false
@@ -120,6 +132,7 @@ final class AboutViewController: NSViewController {
         view.addSubview(logoImage)
         view.addSubview(titleText)
         view.addSubview(titleDescriptionText)
+        view.addSubview(mimiqEngineVersionText)
         view.addSubview(mimiqDescriptionText)
         view.addSubview(dividerView)
         view.addSubview(reportBugButton)
@@ -137,12 +150,17 @@ final class AboutViewController: NSViewController {
             titleText.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             titleText.centerYAnchor.constraint(equalTo: logoImage.centerYAnchor, constant: -20),
             
-            titleDescriptionText.topAnchor.constraint(equalTo: titleText.bottomAnchor, constant: 0),
+            titleDescriptionText.topAnchor.constraint(equalTo: titleText.bottomAnchor, constant: 8),
             titleDescriptionText.leadingAnchor.constraint(equalTo: logoImage.trailingAnchor, constant: 0),
             titleDescriptionText.widthAnchor.constraint(equalToConstant: 300),
             titleDescriptionText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             
-            mimiqDescriptionText.topAnchor.constraint(equalTo: titleDescriptionText.bottomAnchor, constant: 16),
+            mimiqEngineVersionText.topAnchor.constraint(equalTo: titleDescriptionText.bottomAnchor, constant: 8),
+            mimiqEngineVersionText.leadingAnchor.constraint(equalTo: logoImage.trailingAnchor, constant: 0),
+            mimiqEngineVersionText.widthAnchor.constraint(equalToConstant: 300),
+            mimiqEngineVersionText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            
+            mimiqDescriptionText.topAnchor.constraint(equalTo: mimiqEngineVersionText.bottomAnchor, constant: 16),
             mimiqDescriptionText.leadingAnchor.constraint(equalTo: logoImage.trailingAnchor),
             mimiqDescriptionText.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             
