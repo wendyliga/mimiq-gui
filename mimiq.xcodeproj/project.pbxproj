@@ -30,16 +30,6 @@
 		86F2EB36244302E40026C0D5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2EB35244302E40026C0D5 /* main.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		869515D524481B750063C709 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 86A74A2124423C74003F3C68 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 86ADFC032447550A0042A8B4;
-			remoteInfo = mimiqHelper;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		868730FB24461911003620C9 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -201,7 +191,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				869515D624481B750063C709 /* PBXTargetDependency */,
 			);
 			name = mimiq;
 			packageProductDependencies = (
@@ -337,14 +326,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		869515D624481B750063C709 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 86ADFC032447550A0042A8B4 /* mimiqHelper */;
-			targetProxy = 869515D524481B750063C709 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		86A74A3724423C76003F3C68 /* Debug */ = {
