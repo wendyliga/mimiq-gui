@@ -46,7 +46,7 @@ final class GeneralViewController: NSViewController {
         view.isEditable = false
         view.isSelectable = true
         view.isEnabled = false
-        view.stringValue = UserDefaults.standard.string(forKey: "generate_gif_path") ?? "~/Desktop"
+        view.stringValue = UserDefaults.standard.string(forKey: "generate_gif_path") ?? "\(NSHomeDirectory())/Desktop"
         view.translatesAutoresizingMaskIntoConstraints = false
         
         view.setContentHuggingPriority(.defaultLow, for: .horizontal)
@@ -187,7 +187,7 @@ final class GeneralViewController: NSViewController {
         // save to user default
         UserDefaults.standard.set(selectedPath, forKey: UserDefaultsKey.defaultPath.rawValue)
         
-        generatedPathTextField.stringValue = UserDefaults.standard.string(forKey: UserDefaultsKey.defaultPath.rawValue) ?? "~/Desktop"
+        generatedPathTextField.stringValue = UserDefaults.standard.string(forKey: UserDefaultsKey.defaultPath.rawValue) ?? "\(NSHomeDirectory())/Desktop"
     }
     
     @objc

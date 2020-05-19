@@ -59,7 +59,7 @@ final class MimiqRecordProcess {
             fatalError("Unable to find bundle resource path")
         }
         
-        process?.arguments = ["--udid", udid, "--path", UserDefaults.standard.string(forKey: "generate_gif_path") ?? "~/Desktop", "--custom-ffmpeg", ffmpegPath]
+        process?.arguments = ["--udid", udid, "--path", UserDefaults.standard.string(forKey: "generate_gif_path") ?? "\(NSHomeDirectory())/Desktop", "--custom-ffmpeg", ffmpegPath]
         process?.launch()
     }
     
