@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.0.4</string>
+	<string>0.0.5</string>
 	<key>CFBundleVersion</key>
-	<string>4</string>
+	<string>5</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
 	<key>LSMinimumSystemVersion</key>
@@ -35,7 +35,7 @@
 	<key>NSSupportsSuddenTermination</key>
 	<true/>
 	<key>SUFeedURL</key>
-	<string>https://wendyliga.com/mimiq/appcast</string>
+	<string>https://api.wendyliga.com/mimiq/appcast</string>
 	<key>SUPublicEDKey</key>
 	<string>Oz8JDuh1AU1AUK148ANJP5S4bP+chuOk29yb8XuT9a4=</string>
 </dict>
