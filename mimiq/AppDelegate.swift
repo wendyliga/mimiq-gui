@@ -53,6 +53,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             // set auto launch on login
             SMLoginItemSetEnabled("com.wendyliga.mimiqHelper" as CFString, true)
         }
+        
+        #warning("add notification when generate gif success")
     }
     
     func populateMainMenu() {
