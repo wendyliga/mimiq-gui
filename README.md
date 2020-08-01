@@ -9,6 +9,11 @@ This is the GUI version of [mimiq CLI](https://github.com/wendyliga/mimiq).
 
 download latest `dmg` or `zip` at [release page](https://github.com/wendyliga/mimiq-gui/releases)
 
+# FAQ
+
+## I record my GIF, but no generated gif at my `desktop` ?
+This is a weird issue, and i am still looking on it, but to solve this, you can go to `Preferences`, on `General` tab, change manually the `GIF Generated Path` to desktop or other location, and repeat the record process.
+
 # License
 ```
 MIT License
