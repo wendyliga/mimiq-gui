@@ -13,7 +13,7 @@ end
 
 lane :release do 
   certificates()
-  sh "./code_sign.sh"
+  # sh "./code_sign.sh"
 
   build_mac_app(
       project: "mimiq.xcodeproj",
