@@ -18,7 +18,8 @@ lane :certificates do
       "com.wendyliga.mimiq-helper"
     ],
     type: "developer_id",
-    readonly: true
+    readonly: true,
+    verbose: true
   )
 end
 
