@@ -23,6 +23,10 @@ jobs:
         bundle update --bundler
     - name: Update Bundler
       run: bundle install
+    - name: Configure fastlane
+      run: bundle exec fastlane setup
+      env:
+        KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }} 
     - name: Notarize
       run: bundle exec fastlane release
       env:
@@ -33,4 +37,4 @@ jobs:
         APPLE_ID: ${{ secrets.APPLE_ID }} 
         FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD : ${{ secrets.APPLE_ACCESS_TOKEN }}
         TEAM_NAME: ${{ secrets.TEAM_NAME }} 
-        TEAM_ID: ${{ secrets.TEAM_ID }} 
+        TEAM_ID: ${{ secrets.TEAM_ID }}
