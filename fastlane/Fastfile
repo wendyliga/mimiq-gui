@@ -32,7 +32,8 @@ lane :release do
       skip_package_pkg: true,
       clean: true,
       silent: true,
-      export_method: "developer-id"
+      export_method: "developer-id",
+      xcpretty_disable: true
   )
 
   notarize(
