@@ -1,0 +1,24 @@
+name: Release
+
+# on:
+#   push:
+#     tags:
+#       - '*'
+
+on:
+  pull_request:
+    branches: [master]
+    types: [synchronize, opened, reopened, ready_for_review]
+
+jobs:
+  upload_binary:
+    name: Notarize Binary
+    runs-on: macos-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Update Bundler
+      run: sudo bundle install
+    - name: Notarize
+      run: bundle exec fastlane release
+      
