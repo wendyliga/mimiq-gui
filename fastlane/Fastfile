@@ -33,7 +33,7 @@ lane :release do
       clean: true,
       silent: true,
       export_method: "developer-id",
-      xcpretty_disable: true
+      disable_xcpretty: true
   )
 
   notarize(
