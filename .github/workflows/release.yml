@@ -31,7 +31,7 @@ jobs:
         MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.FASTLANE_MATCH_GIT_BASIC_AUTHORIZATION }}
         GIT_EMAIL: ${{ secrets.FASTLANE_CODE_SIGN_REPO_USER }}
         APPLE_ID: ${{ secrets.APPLE_ID }} 
-        FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD : ${{ secrets.APPLE_ACCESS_TOKEN }}
+        FL_NOTARIZE_PASSWORD : ${{ secrets.APPLE_ACCESS_TOKEN }}
         TEAM_NAME: ${{ secrets.TEAM_NAME }} 
         TEAM_ID: ${{ secrets.TEAM_ID }}
         KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }} 

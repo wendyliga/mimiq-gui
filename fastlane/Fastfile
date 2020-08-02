@@ -21,7 +21,7 @@ lane :certificates do
     keychain_name: "fastlane_match_code_sign",
     keychain_password: ENV["KEYCHAIN_PASSWORD"],
     readonly: true,
-    verbose: true
+    verbose: false
   )
 end
 
@@ -40,13 +40,13 @@ lane :release do
       clean: true,
       silent: true,
       export_method: "developer-id",
-      disable_xcpretty: true
+      disable_xcpretty: false
   )
 
   notarize(
     package: ".build/output/mimiq.app",
     asc_provider: ENV["TEAM_ID"],
-    print_log: true,
+    print_log: false,
     verbose: true
   )
 end
