@@ -4,7 +4,7 @@ lane :setup do
   create_keychain(
     name: "fastlane_match_code_sign",
     password: ENV["KEYCHAIN_PASSWORD"],
-    default_keychain: false,
+    default_keychain: is_ci,
     unlock: true,
     timeout: 3600,
     lock_when_sleeps: false
