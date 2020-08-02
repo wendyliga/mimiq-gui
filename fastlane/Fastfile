@@ -26,8 +26,12 @@ lane :certificates do
 end
 
 lane :release do 
+  if is_ci?
+    setup()
+  end
+
   certificates()
-  # sh "./code_sign.sh"
+  sh "./code_sign.sh"
 
   build_mac_app(
       project: "mimiq.xcodeproj",
