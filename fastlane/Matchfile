@@ -1,8 +1,5 @@
-ENV["MATCH_GIT_BASIC_AUTHORIZATION"] = ${{ secret.FASTLANE_MATCH_GIT_BASIC_AUTHORIZATION }}
-ENV["MATCH_PASSWORD"] = ${{ secret.FASTLANE_MATCH_PASSPHRASE }}
-
-git_url ${{ secret.FASTLANE_CODE_SIGN_REPO_URL }}
-git_user_email ${{ secret.FASTLANE_CODE_SIGN_REPO_USER }}
+git_url ENV["MATCH_REPO"]
+git_user_email ENV["GIT_EMAIL"]
 
 shallow_clone true
 

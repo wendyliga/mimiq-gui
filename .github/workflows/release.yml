@@ -25,4 +25,12 @@ jobs:
       run: bundle install
     - name: Notarize
       run: bundle exec fastlane release
-      
+      env:
+        MATCH_REPO: ${{ secret.FASTLANE_CODE_SIGN_REPO_URL }}
+        MATCH_PASSWORD: ${{ secret.FASTLANE_MATCH_PASSPHRASE }}
+        MATCH_GIT_BASIC_AUTHORIZATION: ${{ secret.FASTLANE_MATCH_GIT_BASIC_AUTHORIZATION }}
+        GIT_EMAIL: ${{ secret.FASTLANE_CODE_SIGN_REPO_USER }}
+        APPLE_ID: ${{ secret.APPLE_ID }} 
+        FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD : ${{ secret.APPLE_ACCESS_TOKEN }}
+        TEAM_NAME: ${{ secret.TEAM_NAME }} 
+        TEAM_ID: ${{ secret.TEAM_ID }} 
