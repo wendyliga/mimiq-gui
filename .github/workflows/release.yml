@@ -18,7 +18,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Install Bundler
-      run: sudo gem install bundler
+      run: |
+        sudo gem install bundler
+        bundle update --bundler
     - name: Update Bundler
       run: bundle install
     - name: Notarize
