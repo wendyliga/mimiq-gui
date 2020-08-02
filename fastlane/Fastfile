@@ -1,23 +1,34 @@
-# This file contains the fastlane.tools configuration
-# You can find the documentation at https://docs.fastlane.tools
-#
-# For a list of all available actions, check out
-#
-#     https://docs.fastlane.tools/actions
-#
-# For a list of all available plugins, check out
-#
-#     https://docs.fastlane.tools/plugins/available-plugins
-#
+default_platform(:mac)
 
-# Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
+lane :certificates do
+  match(
+    app_identifier: [
+      "com.wendyliga.mimiq", 
+      "com.wendyliga.mimiq-helper"
+    ],
+    type: "developer_id",
+    readonly: true
+  )
+end
 
-default_platform(:ios)
+lane :release do 
+  certificates()
+  sh "./code_sign.sh"
 
-platform :ios do
-  desc "Description of what the lane does"
-  lane :custom_lane do
-    # add actions here: https://docs.fastlane.tools/actions
-  end
+  build_mac_app(
+      project: "mimiq.xcodeproj",
+      scheme: "mimiq",
+      skip_package_pkg: true,
+      clean: true,
+      silent: true,
+      export_method: "developer-id"
+  )
+
+  ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"] = ${{ secret.APPLE_ACCESS_TOKEN }}
+  notarize(
+    package: ".build/output/mimiq.app",
+    asc_provider: {{ $secret.TEAM_ID }},
+    print_log: true,
+    verbose: true
+  )
 end
