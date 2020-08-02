@@ -46,7 +46,7 @@ lane :release do
   notarize(
     package: ".build/output/mimiq.app",
     asc_provider: ENV["TEAM_ID"],
-    print_log: false,
+    print_log: true,
     verbose: true
   )
 end
