@@ -36,3 +36,4 @@ jobs:
         TEAM_NAME: ${{ secrets.TEAM_NAME }} 
         TEAM_ID: ${{ secrets.TEAM_ID }}
         KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }} 
+        FASTLANE_DONT_STORE_PASSWORD: 1
