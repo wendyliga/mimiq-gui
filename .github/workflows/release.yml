@@ -63,7 +63,7 @@ jobs:
         minor=`fastlane/semver get minor $version`
         revision=`fastlane/semver get patch $version`
         installer_link="https://github.com/wendyliga/mimiq-gui/releases/download/${version}/mimiq.zip"
-        data='{"build_number": $build_number, "changelogs": [{ "changelog": "TBA" }], "installer_link": "${installer_link}", "major": $major, "minor": $minor, "revision": $revision, "sparkle_length": ${sparkle_length}, "sparkle_signature": "${sparkle_signature}"}'
+        data='{"build_number": '$build_number', "changelogs": [{ "changelog": "TBA" }], "installer_link": "'$installer_link'", "major": '$major', "minor": '$minor', "revision": '$revision', "sparkle_length": '$sparkle_length', "sparkle_signature": "'$sparkle_signature'"}'
         echo $data
         curl \
         --request POST \
