@@ -56,11 +56,19 @@ jobs:
       run: |
         sparkle_signature=`awk '{ print $1 }' ~/sparkle_signature`
         sparkle_length=`awk '{ print $1 }' ~/sparkle_length`
+        build_number=`plutil -extract CFBundleVersion xml1 -o - mimiq/Info.plist | sed -n "s/.*<string>\(.*\)<\/string>.*/\1/p"`
+        version=`plutil -extract CFBundleShortVersionString xml1 -o - mimiq/Info.plist | sed -n "s/.*<string>\(.*\)<\/string>.*/\1/p"`
+        major=`semver get major $version`
+        minor=`semver get minor $version`
+        revision=`semver get patch $version`
+        installer_link="https://github.com/wendyliga/mimiq-gui/releases/download/${version}/mimiq.zip"
+        data= '{"build_number": $build_number, "changelogs": [{ "changelog": "TBA" }], "installer_link": "${installer_link}", "major": $major, "minor": $minor, "revision": $revision, "sparkle_length": ${sparkle_length}, "sparkle_signature": "${sparkle_signature}"}'
+        echo $data
         curl \
         --request POST \
         --header 'Content-Type: application/json' \
         --header  'Authorization: $SERVER_ACCESS_TOKEN' \
-        --data '{"build_number": 1000, "changelogs": [{ "changelog": "TBA" }], "installer_link": "www.github.com", "major": 0, "minor": 0, "revision": 0, "sparkle_length": ${sparkle_length}, "sparkle_signature": "${sparkle_signature}"}' \
+        --data $data \
         https://api.wendyliga.com/mimiq/version
       env:
         SERVER_ACCESS_TOKEN: ${{ secrets.SERVER_ACCESS_TOKEN }}
