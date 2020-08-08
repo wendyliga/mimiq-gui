@@ -25,6 +25,16 @@ fastlane setup
 fastlane certificates
 ```
 
+### sparkle_package
+```
+fastlane sparkle_package
+```
+
+### create_dmg
+```
+fastlane create_dmg
+```
+
 ### release
 ```
 fastlane release

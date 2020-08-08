@@ -25,6 +25,15 @@ lane :certificates do
   )
 end
 
+lane :sparkle_package do
+  sh "ditto -c -k --sequesterRsrc --keepParent ../.build/output/mimiq.app ../.build/output/mimiq.zip"
+  sh "./sign_update -s $SPARKLE_PRIVATE_KEY ../.build/output/mimiq.zip > ~/sparkle_result"
+end
+
+lane :create_dmg do
+  sh "create-dmg ../.build/output/mimiq.app ../.build/output"
+end
+
 lane :release do 
   if is_ci?
     setup()

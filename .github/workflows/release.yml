@@ -17,12 +17,12 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Install Bundler
+    - name: Install Dependecies
       run: |
         sudo gem install bundler
         bundle update --bundler
-    - name: Update Bundler
-      run: bundle install
+        bundle install
+        npm install --global create-dmg
     - name: Notarize
       run: bundle exec fastlane release
       env:
@@ -37,3 +37,18 @@ jobs:
         TEAM_ID: ${{ secrets.TEAM_ID }}
         KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }} 
         FASTLANE_DONT_STORE_PASSWORD: 1
+    - name: Build Sparkle Zip
+      run: |
+        bundle exec fastlane sparkle_package
+        cat ~/sparkle_result | sed -E 's/.*"(.*)".?length.*/\1/' > ~/sparkle_signature
+        grep -o 'length=".*"' ~/sparkle_result | tr -d 'length="' > ~/sparkle_length
+    - name: Build DMG
+      run: bundle exec fastlane create_dmg
+    # - name: Upload Zip binaries to release
+    #   uses: svenstaro/upload-release-action@v1-release
+    #   with:
+    #     repo_token: ${{ secrets.GITHUB_TOKEN }}
+    #     file: .build/mimiq.zip
+    #     asset_name: mimiq.zip
+    #     tag: ${{ github.ref }}
+    #     overwrite: true
