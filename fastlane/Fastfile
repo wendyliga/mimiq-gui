@@ -35,11 +35,6 @@ lane :create_dmg do
 end
 
 lane :release do 
-  if is_ci?
-    setup()
-    certificates()
-  end
-
   sh "./code_sign.sh"
 
   build_mac_app(

@@ -23,6 +23,10 @@ jobs:
         bundle update --bundler
         bundle install
         npm install --global create-dmg
+    - name: Setup Environment
+      run: bundle exec fastlane Setup
+    - name: Update Certificates
+      run: bundle exec fastlane certificates
     - name: Notarize
       run: bundle exec fastlane release
       env:
@@ -46,6 +50,18 @@ jobs:
         SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
     - name: Build DMG
       run: bundle exec fastlane create_dmg
+    - name: Notify Server
+      run: |
+        sparkle_signature=`awk '{ print $1 }' ~/sparkle_signature`
+        sparkle_length=`awk '{ print $1 }' ~/sparkle_length`
+        curl \
+        --request POST \
+        --header 'Content-Type: application/json' \
+        --header  'Authorization: $SERVER_ACCESS_TOKEN' \
+        --data '{"build_number": 1000, "changelogs": [{ "changelog": "TBA" }], "installer_link": "www.github.com", "major": 0, "minor": 0, "revision": 0, "sparkle_length": ${sparkle_length}, "sparkle_signature": "${sparkle_signature}"}' \
+        https://api.wendyliga.com/mimiq/version
+      env:
+        SERVER_ACCESS_TOKEN: ${{ secrets.SERVER_ACCESS_TOKEN }}
     # - name: Upload Zip binaries to release
     #   uses: svenstaro/upload-release-action@v1-release
     #   with:
