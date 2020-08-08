@@ -66,8 +66,9 @@ jobs:
         curl -v https://api.wendyliga.com/mimiq/version \
         -X POST \
         -H 'Content-Type: application/json' \
+        -H 'Authorization: $SERVER_ACCESS_TOKEN' \
         -H 'User-Agent: Github Action' \
-        -d `{
+        -d '{
           "build_number": '$build_number', 
           "changelogs": [
             { 
@@ -80,7 +81,7 @@ jobs:
           "revision": '$revision', 
           "sparkle_length": '$sparkle_length', 
           "sparkle_signature": "'$sparkle_signature'"
-          }
+          }'
       env:
         SERVER_ACCESS_TOKEN: ${{ secrets.SERVER_ACCESS_TOKEN }}
     # - name: Upload Zip binaries to release
