@@ -47,10 +47,10 @@ lane :release do
       disable_xcpretty: false
   )
 
-  notarize(
-    package: ".build/output/mimiq.app",
-    asc_provider: ENV["TEAM_ID"],
-    print_log: true,
-    verbose: true
-  )
+  # notarize(
+  #   package: ".build/output/mimiq.app",
+  #   asc_provider: ENV["TEAM_ID"],
+  #   print_log: true,
+  #   verbose: true
+  # )
 end
