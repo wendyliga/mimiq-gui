@@ -63,14 +63,24 @@ jobs:
         minor=`fastlane/semver get minor $version`
         revision=`fastlane/semver get patch $version`
         installer_link="https://github.com/wendyliga/mimiq-gui/releases/download/${version}/mimiq.zip"
-        data='{"build_number": '$build_number', "changelogs": [{ "changelog": "TBA" }], "installer_link": "'$installer_link'", "major": '$major', "minor": '$minor', "revision": '$revision', "sparkle_length": '$sparkle_length', "sparkle_signature": "'$sparkle_signature'"}'
-        echo $data
-        curl \
-        --request POST \
-        --header 'Content-Type: application/json' \
-        --header  'Authorization: $SERVER_ACCESS_TOKEN' \
-        --data $data \
-        https://api.wendyliga.com/mimiq/version
+        curl -v https://api.wendyliga.com/mimiq/version \
+        -X POST \
+        -H 'Content-Type: application/json' \
+        -H 'User-Agent: Github Action' \
+        -d `{
+          "build_number": '$build_number', 
+          "changelogs": [
+            { 
+              "changelog": "TBA" 
+              }
+          ], 
+          "installer_link": "'$installer_link'",
+          "major": '$major',
+          "minor": '$minor', 
+          "revision": '$revision', 
+          "sparkle_length": '$sparkle_length', 
+          "sparkle_signature": "'$sparkle_signature'"
+          }
       env:
         SERVER_ACCESS_TOKEN: ${{ secrets.SERVER_ACCESS_TOKEN }}
     # - name: Upload Zip binaries to release
