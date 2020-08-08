@@ -42,6 +42,8 @@ jobs:
         bundle exec fastlane sparkle_package
         cat ~/sparkle_result | sed -E 's/.*"(.*)".?length.*/\1/' > ~/sparkle_signature
         grep -o 'length=".*"' ~/sparkle_result | tr -d 'length="' > ~/sparkle_length
+      env:
+        SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
     - name: Build DMG
       run: bundle exec fastlane create_dmg
     # - name: Upload Zip binaries to release
