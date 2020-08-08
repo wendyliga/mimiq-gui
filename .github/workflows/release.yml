@@ -24,7 +24,7 @@ jobs:
         bundle install
         npm install --global create-dmg
     - name: Setup Environment
-      run: bundle exec fastlane Setup
+      run: bundle exec fastlane setup
     - name: Update Certificates
       run: bundle exec fastlane certificates
     - name: Notarize
