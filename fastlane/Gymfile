@@ -1,0 +1,5 @@
+build_path ".build/build"
+archive_path ".build/archive"
+derived_data_path ".build/derived_data"
+buildlog_path ".build/logs"
+output_directory ".build/output"

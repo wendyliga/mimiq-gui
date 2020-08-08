@@ -1,0 +1,58 @@
+default_platform(:mac)
+
+lane :setup do 
+  create_keychain(
+    name: "fastlane_match_code_sign",
+    password: ENV["KEYCHAIN_PASSWORD"],
+    default_keychain: is_ci,
+    unlock: true,
+    timeout: 3600,
+    lock_when_sleeps: false
+  )
+end
+
+lane :certificates do
+  match(
+    app_identifier: [
+      "com.wendyliga.mimiq", 
+      "com.wendyliga.mimiq-helper"
+    ],
+    type: "developer_id",
+    keychain_name: "fastlane_match_code_sign",
+    keychain_password: ENV["KEYCHAIN_PASSWORD"],
+    readonly: true,
+    verbose: false
+  )
+end
+
+lane :sparkle_package do
+  sh "ditto -c -k --sequesterRsrc --keepParent ../.build/output/mimiq.app ../.build/output/mimiq.zip"
+  sh "./sign_update -s $SPARKLE_PRIVATE_KEY ../.build/output/mimiq.zip > ~/sparkle_result"
+end
+
+lane :create_dmg do
+  sh "create-dmg ../.build/output/mimiq.app ../.build/output --dmg-title='mimiq' --overwrite" 
+  version = String.new(sh 'plutil -extract CFBundleShortVersionString xml1 -o - ../.build/output/mimiq.app/Contents/Info.plist | sed -n "s/.*<string>\(.*\)<\/string>.*/\1/p"').gsub("\n","")
+  sh "mv ../.build/output/mimiq\\ #{version}.dmg ../.build/output/mimiq.dmg"
+end
+
+lane :release do 
+  sh "./code_sign.sh"
+
+  build_mac_app(
+      project: "mimiq.xcodeproj",
+      scheme: "mimiq",
+      skip_package_pkg: true,
+      clean: true,
+      silent: true,
+      export_method: "developer-id",
+      disable_xcpretty: false
+  )
+
+  # notarize(
+  #   package: ".build/output/mimiq.app",
+  #   asc_provider: ENV["TEAM_ID"],
+  #   print_log: true,
+  #   verbose: true
+  # )
+end
