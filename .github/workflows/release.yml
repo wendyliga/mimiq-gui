@@ -14,6 +14,7 @@ jobs:
   upload_binary:
     name: Notarize Binary
     runs-on: macos-latest
+    timeout-minutes: 5
     steps:
     - name: Checkout
       uses: actions/checkout@v2
