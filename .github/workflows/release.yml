@@ -1,14 +1,9 @@
 name: Release
 
-# on:
-#   push:
-#     tags:
-#       - '*'
-
 on:
-  pull_request:
-    branches: [master]
-    types: [synchronize, opened, reopened, ready_for_review]
+  push:
+    tags:
+      - '*'
 
 jobs:
   upload_binary:
@@ -52,7 +47,24 @@ jobs:
       env:
         SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
     - name: Build DMG
-      run: bundle exec fastlane create_dmg
+      run: |
+        bundle exec fastlane create_dmg
+    - name: Upload Zip
+      uses: svenstaro/upload-release-action@v1-release
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: .build/output/mimiq.zip
+        asset_name: mimiq.zip
+        tag: ${{ github.ref }}
+        overwrite: true
+    - name: Upload DMG
+      uses: svenstaro/upload-release-action@v1-release
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: .build/output/mimiq.dmg 
+        asset_name: mimiq.dmg
+        tag: ${{ github.ref }}
+        overwrite: true
     - name: Notify Server
       run: |
         sparkle_signature=`awk '{ print $1 }' ~/sparkle_signature`
@@ -84,11 +96,3 @@ jobs:
           }'
       env:
         SERVER_ACCESS_TOKEN: ${{ secrets.SERVER_ACCESS_TOKEN }}
-    # - name: Upload Zip binaries to release
-    #   uses: svenstaro/upload-release-action@v1-release
-    #   with:
-    #     repo_token: ${{ secrets.GITHUB_TOKEN }}
-    #     file: .build/mimiq.zip
-    #     asset_name: mimiq.zip
-    #     tag: ${{ github.ref }}
-    #     overwrite: true

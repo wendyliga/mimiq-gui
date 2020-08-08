@@ -31,7 +31,9 @@ lane :sparkle_package do
 end
 
 lane :create_dmg do
-  sh "create-dmg ../.build/output/mimiq.app ../.build/output"
+  sh "create-dmg ../.build/output/mimiq.app ../.build/output --dmg-title='mimiq' --overwrite" 
+  version = String.new(sh 'plutil -extract CFBundleShortVersionString xml1 -o - ../.build/output/mimiq.app/Contents/Info.plist | sed -n "s/.*<string>\(.*\)<\/string>.*/\1/p"').gsub("\n","")
+  sh "mv ../.build/output/mimiq\\ #{version}.dmg ../.build/output/mimiq.dmg"
 end
 
 lane :release do 
