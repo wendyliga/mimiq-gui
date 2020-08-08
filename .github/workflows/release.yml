@@ -25,8 +25,12 @@ jobs:
         npm install --global create-dmg
     - name: Setup Environment
       run: bundle exec fastlane setup
+      env:
+        KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }} 
     - name: Update Certificates
       run: bundle exec fastlane certificates
+      env:
+        KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }} 
     - name: Notarize
       run: bundle exec fastlane release
       env:
@@ -39,8 +43,6 @@ jobs:
         FASTLANE_PASSWORD: ${{ secrets.APPLE_ACCESS_TOKEN }}
         TEAM_NAME: ${{ secrets.TEAM_NAME }} 
         TEAM_ID: ${{ secrets.TEAM_ID }}
-        KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }} 
-        FASTLANE_DONT_STORE_PASSWORD: 1
     - name: Build Sparkle Zip
       run: |
         bundle exec fastlane sparkle_package
