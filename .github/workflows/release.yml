@@ -47,8 +47,7 @@ jobs:
       env:
         SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
     - name: Build DMG
-      run: |
-        bundle exec fastlane create_dmg
+      run: bundle exec fastlane create_dmg
     - name: Upload Zip
       uses: svenstaro/upload-release-action@v1-release
       with:
