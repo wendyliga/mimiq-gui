@@ -58,9 +58,9 @@ jobs:
         sparkle_length=`awk '{ print $1 }' ~/sparkle_length`
         build_number=`plutil -extract CFBundleVersion xml1 -o - mimiq/Info.plist | sed -n "s/.*<string>\(.*\)<\/string>.*/\1/p"`
         version=`plutil -extract CFBundleShortVersionString xml1 -o - mimiq/Info.plist | sed -n "s/.*<string>\(.*\)<\/string>.*/\1/p"`
-        major=`semver get major $version`
-        minor=`semver get minor $version`
-        revision=`semver get patch $version`
+        major=`fastlane//semver get major $version`
+        minor=`fastlane/semver get minor $version`
+        revision=`fastlane/semver get patch $version`
         installer_link="https://github.com/wendyliga/mimiq-gui/releases/download/${version}/mimiq.zip"
         data='{"build_number": $build_number, "changelogs": [{ "changelog": "TBA" }], "installer_link": "${installer_link}", "major": $major, "minor": $minor, "revision": $revision, "sparkle_length": ${sparkle_length}, "sparkle_signature": "${sparkle_signature}"}'
         echo $data
