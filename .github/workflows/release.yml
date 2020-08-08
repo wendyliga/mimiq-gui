@@ -31,13 +31,13 @@ jobs:
       run: bundle exec fastlane certificates
       env:
         KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }} 
-    - name: Notarize
-      run: bundle exec fastlane release
-      env:
         MATCH_REPO: ${{ secrets.FASTLANE_CODE_SIGN_REPO_URL }}
         MATCH_PASSWORD: ${{ secrets.FASTLANE_MATCH_PASSPHRASE }}
         MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.FASTLANE_MATCH_GIT_BASIC_AUTHORIZATION }}
         GIT_EMAIL: ${{ secrets.FASTLANE_CODE_SIGN_REPO_USER }}
+    - name: Notarize
+      run: bundle exec fastlane release
+      env:
         APPLE_ID: ${{ secrets.APPLE_ID }} 
         FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD : ${{ secrets.APPLE_ACCESS_TOKEN }}
         FASTLANE_PASSWORD: ${{ secrets.APPLE_ACCESS_TOKEN }}
