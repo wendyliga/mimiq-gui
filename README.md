@@ -1,4 +1,5 @@
 # mimiq GUI version
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/wendyliga/mimiq-gui)
 
 ![mimiq](https://user-images.githubusercontent.com/16457495/79256286-f1d80a00-7eb1-11ea-88db-58d870e663d5.jpg)
 
