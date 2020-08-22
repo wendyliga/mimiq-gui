@@ -1,10 +1,23 @@
 # mimiq GUI version
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/wendyliga/mimiq-gui)
 
-![mimiq](https://user-images.githubusercontent.com/16457495/79256286-f1d80a00-7eb1-11ea-88db-58d870e663d5.jpg)
+![mimiq](https://user-images.githubusercontent.com/16457495/78473788-84b7cc80-776d-11ea-8c44-5d6c8e46f2cb.png)
+<p align="center">
+    <a href="https://github.com/wendyliga/mimiq-gui/releases">
+        <img src="https://img.shields.io/github/v/release/wendyliga/mimiq-gui" alt="Latest Release" />
+    </a>
+    <a href="#">
+        <img src="https://img.shields.io/github/license/wendyliga/mimiq" />
+    </a>
+    <a href="https://twitter.com/wendyliga">
+        <img src="https://img.shields.io/badge/contact-@wendyliga-blue.svg?style=flat" alt="Twitter: @wendyliga" />
+    </a>
+</p>
 
 mimiq is simple executable to record your Xcode simulator and convert it to GIF.
 This is the GUI version of [mimiq CLI](https://github.com/wendyliga/mimiq).
+
+# Screenshot
+![mimiq](https://user-images.githubusercontent.com/16457495/79256286-f1d80a00-7eb1-11ea-88db-58d870e663d5.jpg)
 
 # Installation
 
