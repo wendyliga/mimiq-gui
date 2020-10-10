@@ -182,6 +182,12 @@ final class MimiqMenu: NSMenu {
             }
             
             guard let errorOutput = errorOutput, terminationCode == 1 else {
+                let notification = NSUserNotification()
+                notification.title = "Record Success"
+                notification.informativeText = "Grab your Gif at"
+                notification.soundName = NSUserNotificationDefaultSoundName
+                NSUserNotificationCenter.default.deliver(notification)
+                
                 return
             }
             
