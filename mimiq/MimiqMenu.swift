@@ -184,7 +184,7 @@ final class MimiqMenu: NSMenu {
             guard let errorOutput = errorOutput, terminationCode == 1 else {
                 let notification = NSUserNotification()
                 notification.title = "Record Success"
-                notification.informativeText = "Grab your Gif at"
+                notification.informativeText = "Grab your Gif at \(UserDefaults.standard.string(forKey: "generate_gif_path") ?? "\(NSHomeDirectory())/Desktop")"
                 notification.soundName = NSUserNotificationDefaultSoundName
                 NSUserNotificationCenter.default.deliver(notification)
                 
