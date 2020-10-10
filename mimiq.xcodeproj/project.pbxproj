@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		860F598C24438B35003722B3 /* MimiqMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860F598B24438B35003722B3 /* MimiqMenu.swift */; };
+		8616F78824D69072003B0DD2 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8616F78724D69072003B0DD2 /* Sparkle.framework */; };
+		8616F78924D69100003B0DD2 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8616F78724D69072003B0DD2 /* Sparkle.framework */; };
+		8616F78A24D69100003B0DD2 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8616F78724D69072003B0DD2 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		86435AE4244765F500B66AC0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86435AE3244765F500B66AC0 /* main.swift */; };
-		868730F924461911003620C9 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 868730F724461907003620C9 /* Sparkle.framework */; };
-		868730FA24461911003620C9 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 868730F724461907003620C9 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		868730FF2446257E003620C9 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868730FE2446257E003620C9 /* UserDefaultsKey.swift */; };
 		8690C2FB2443606C005B671E /* SwiftKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8690C2FA2443606C005B671E /* SwiftKit */; };
 		86A74A2D24423C74003F3C68 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A74A2C24423C74003F3C68 /* AppDelegate.swift */; };
@@ -31,13 +32,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		868730FB24461911003620C9 /* Embed Frameworks */ = {
+		8616F78B24D69100003B0DD2 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				868730FA24461911003620C9 /* Sparkle.framework in Embed Frameworks */,
+				8616F78A24D69100003B0DD2 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,8 +57,8 @@
 
 /* Begin PBXFileReference section */
 		860F598B24438B35003722B3 /* MimiqMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MimiqMenu.swift; sourceTree = "<group>"; };
+		8616F78724D69072003B0DD2 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		86435AE3244765F500B66AC0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		868730F724461907003620C9 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		868730FE2446257E003620C9 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		869515D22448139B0063C709 /* mimiqRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mimiqRelease.entitlements; sourceTree = "<group>"; };
 		869515D3244813B50063C709 /* mimiqHelperRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mimiqHelperRelease.entitlements; sourceTree = "<group>"; };
@@ -89,7 +90,8 @@
 			files = (
 				86E76CDE24472DD400A36360 /* ServiceManagement.framework in Frameworks */,
 				8690C2FB2443606C005B671E /* SwiftKit in Frameworks */,
-				868730F924461911003620C9 /* Sparkle.framework in Frameworks */,
+				8616F78824D69072003B0DD2 /* Sparkle.framework in Frameworks */,
+				8616F78924D69100003B0DD2 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,21 +105,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		868730F6244618F8003620C9 /* Framework */ = {
+		8669A90224D6903200899087 /* framework */ = {
 			isa = PBXGroup;
 			children = (
-				868730F724461907003620C9 /* Sparkle.framework */,
+				8616F78724D69072003B0DD2 /* Sparkle.framework */,
 			);
-			name = Framework;
+			path = framework;
 			sourceTree = "<group>";
 		};
 		86A74A2024423C74003F3C68 = {
 			isa = PBXGroup;
 			children = (
+				8669A90224D6903200899087 /* framework */,
 				86A74A2B24423C74003F3C68 /* mimiq */,
 				86ADFC052447550A0042A8B4 /* mimiqHelper */,
 				86A74A2A24423C74003F3C68 /* Products */,
-				868730F6244618F8003620C9 /* Framework */,
 				86E76CDB24472DCF00A36360 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -184,9 +186,9 @@
 				86A74A2524423C74003F3C68 /* Sources */,
 				86A74A2624423C74003F3C68 /* Frameworks */,
 				86A74A2724423C74003F3C68 /* Resources */,
-				868730FB24461911003620C9 /* Embed Frameworks */,
 				86E76CD924472D9B00A36360 /* CopyFiles */,
 				869515D42448172E0063C709 /* ShellScript */,
+				8616F78B24D69100003B0DD2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -332,6 +334,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -364,6 +367,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -382,6 +386,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -392,6 +397,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -424,6 +430,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_ARCHS = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -435,6 +442,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -454,6 +462,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/framework",
 				);
 				INFOPLIST_FILE = mimiq/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -463,7 +472,7 @@
 				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wendyliga.mimiq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "com.wendyliga.mimiq-debug";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.wendyliga.mimiq macos";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -481,6 +490,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/framework",
 				);
 				INFOPLIST_FILE = mimiq/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -490,7 +500,7 @@
 				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wendyliga.mimiq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "com.wendyliga.mimiq-developer-id";
+				PROVISIONING_PROFILE_SPECIFIER = "match Direct com.wendyliga.mimiq macos";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -509,9 +519,9 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wendyliga.mimiqHelper;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wendyliga.mimiq-helper";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "com.wendyliga.mimiqhelper-debug";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.wendyliga.mimiq-helper macos";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -531,9 +541,9 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wendyliga.mimiqHelper;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.wendyliga.mimiq-helper";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "com.wendyliga.mimiqhelper-developer-id";
+				PROVISIONING_PROFILE_SPECIFIER = "match Direct com.wendyliga.mimiq-helper macos";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};

@@ -1,0 +1,97 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  upload_binary:
+    name: Notarize Binary
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Install Dependecies
+      run: |
+        sudo gem install bundler
+        bundle update --bundler
+        bundle install
+        npm install --global create-dmg
+    - name: Setup Environment
+      run: bundle exec fastlane setup
+      env:
+        KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }} 
+    - name: Update Certificates
+      run: bundle exec fastlane certificates
+      env:
+        KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }} 
+        MATCH_REPO: ${{ secrets.FASTLANE_CODE_SIGN_REPO_URL }}
+        MATCH_PASSWORD: ${{ secrets.FASTLANE_MATCH_PASSPHRASE }}
+        MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.FASTLANE_MATCH_GIT_BASIC_AUTHORIZATION }}
+        GIT_EMAIL: ${{ secrets.FASTLANE_CODE_SIGN_REPO_USER }}
+    - name: Notarize
+      run: bundle exec fastlane release
+      env:
+        APPLE_ID: ${{ secrets.APPLE_ID }} 
+        FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD : ${{ secrets.APPLE_ACCESS_TOKEN }}
+        FASTLANE_PASSWORD: ${{ secrets.APPLE_ACCESS_TOKEN }}
+        TEAM_NAME: ${{ secrets.TEAM_NAME }} 
+        TEAM_ID: ${{ secrets.TEAM_ID }}
+    - name: Build Sparkle Zip
+      run: |
+        bundle exec fastlane sparkle_package
+        cat ~/sparkle_result | sed -E 's/.*"(.*)".?length.*/\1/' > ~/sparkle_signature
+        grep -o 'length=".*"' ~/sparkle_result | tr -d 'length="' > ~/sparkle_length
+      env:
+        SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
+    - name: Build DMG
+      run: bundle exec fastlane create_dmg
+    - name: Upload Zip
+      uses: svenstaro/upload-release-action@v1-release
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: .build/output/mimiq.zip
+        asset_name: mimiq.zip
+        tag: ${{ github.ref }}
+        overwrite: true
+    - name: Upload DMG
+      uses: svenstaro/upload-release-action@v1-release
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: .build/output/mimiq.dmg 
+        asset_name: mimiq.dmg
+        tag: ${{ github.ref }}
+        overwrite: true
+    - name: Notify Server
+      run: |
+        sparkle_signature=`awk '{ print $1 }' ~/sparkle_signature`
+        sparkle_length=`awk '{ print $1 }' ~/sparkle_length`
+        build_number=`plutil -extract CFBundleVersion xml1 -o - mimiq/Info.plist | sed -n "s/.*<string>\(.*\)<\/string>.*/\1/p"`
+        version=`plutil -extract CFBundleShortVersionString xml1 -o - mimiq/Info.plist | sed -n "s/.*<string>\(.*\)<\/string>.*/\1/p"`
+        major=`fastlane/semver get major $version`
+        minor=`fastlane/semver get minor $version`
+        revision=`fastlane/semver get patch $version`
+        installer_link="https://github.com/wendyliga/mimiq-gui/releases/download/${version}/mimiq.zip"
+        curl -v https://api.wendyliga.com/mimiq/version \
+        -X POST \
+        -H 'Content-Type: application/json' \
+        -H 'Authorization: $SERVER_ACCESS_TOKEN' \
+        -H 'User-Agent: Github Action' \
+        -d '{
+          "build_number": '$build_number', 
+          "changelogs": [
+            { 
+              "changelog": "TBA" 
+              }
+          ], 
+          "installer_link": "'$installer_link'",
+          "major": '$major',
+          "minor": '$minor', 
+          "revision": '$revision', 
+          "sparkle_length": '$sparkle_length', 
+          "sparkle_signature": "'$sparkle_signature'"
+          }'
+      env:
+        SERVER_ACCESS_TOKEN: ${{ secrets.SERVER_ACCESS_TOKEN }}
