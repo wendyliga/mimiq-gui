@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		860F598C24438B35003722B3 /* MimiqMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860F598B24438B35003722B3 /* MimiqMenu.swift */; };
 		8616F78824D69072003B0DD2 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8616F78724D69072003B0DD2 /* Sparkle.framework */; };
-		8616F78924D69100003B0DD2 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8616F78724D69072003B0DD2 /* Sparkle.framework */; };
 		8616F78A24D69100003B0DD2 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8616F78724D69072003B0DD2 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		86435AE4244765F500B66AC0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86435AE3244765F500B66AC0 /* main.swift */; };
 		868730FF2446257E003620C9 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868730FE2446257E003620C9 /* UserDefaultsKey.swift */; };
@@ -91,7 +90,6 @@
 				86E76CDE24472DD400A36360 /* ServiceManagement.framework in Frameworks */,
 				8690C2FB2443606C005B671E /* SwiftKit in Frameworks */,
 				8616F78824D69072003B0DD2 /* Sparkle.framework in Frameworks */,
-				8616F78924D69100003B0DD2 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,7 +224,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Wendy Liga";
 				TargetAttributes = {
 					86A74A2824423C74003F3C68 = {
@@ -458,7 +456,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -513,7 +511,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
-				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = mimiqHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
