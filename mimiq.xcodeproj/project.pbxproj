@@ -28,6 +28,7 @@
 		86E76CC42447291000A36360 /* mimiq in Resources */ = {isa = PBXBuildFile; fileRef = 86E76CC32447291000A36360 /* mimiq */; };
 		86E76CDE24472DD400A36360 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E76CDC24472DCF00A36360 /* ServiceManagement.framework */; };
 		86F2EB36244302E40026C0D5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2EB35244302E40026C0D5 /* main.swift */; };
+		E501127F25471FE60065D786 /* MimiqMenu+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E501127E25471FE60065D786 /* MimiqMenu+ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -80,6 +81,7 @@
 		86E76CC32447291000A36360 /* mimiq */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = mimiq; sourceTree = "<group>"; };
 		86E76CDC24472DCF00A36360 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		86F2EB35244302E40026C0D5 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		E501127E25471FE60065D786 /* MimiqMenu+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MimiqMenu+ViewModel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 		86A74A2B24423C74003F3C68 /* mimiq */ = {
 			isa = PBXGroup;
 			children = (
+				E501127D25471C030065D786 /* Views */,
 				869515D22448139B0063C709 /* mimiqRelease.entitlements */,
 				86E76CC1244728D200A36360 /* ffmpeg */,
 				86E76CC32447291000A36360 /* mimiq */,
@@ -143,7 +146,6 @@
 				86A74A2C24423C74003F3C68 /* AppDelegate.swift */,
 				86BF3A1E2444B5AB007DBE15 /* GeneralViewController.swift */,
 				86F2EB35244302E40026C0D5 /* main.swift */,
-				860F598B24438B35003722B3 /* MimiqMenu.swift */,
 				86C0CF1124438FC80052D963 /* MimiqProcess.swift */,
 				86BF3A202444BFDE007DBE15 /* NSImage+Extension.swift */,
 				86C0CF15244452230052D963 /* PreferencesViewController.swift */,
@@ -172,6 +174,15 @@
 				86E76CDC24472DCF00A36360 /* ServiceManagement.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E501127D25471C030065D786 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				860F598B24438B35003722B3 /* MimiqMenu.swift */,
+				E501127E25471FE60065D786 /* MimiqMenu+ViewModel.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +318,7 @@
 				86BF3A1D2444B59A007DBE15 /* AboutViewController.swift in Sources */,
 				86BF3A1F2444B5AB007DBE15 /* GeneralViewController.swift in Sources */,
 				86C0CF16244452230052D963 /* PreferencesViewController.swift in Sources */,
+				E501127F25471FE60065D786 /* MimiqMenu+ViewModel.swift in Sources */,
 				860F598C24438B35003722B3 /* MimiqMenu.swift in Sources */,
 				86C0CF1224438FC80052D963 /* MimiqProcess.swift in Sources */,
 				86A74A2D24423C74003F3C68 /* AppDelegate.swift in Sources */,

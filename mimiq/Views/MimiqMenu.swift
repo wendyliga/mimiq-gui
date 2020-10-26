@@ -10,6 +10,8 @@ import Cocoa
 import Sparkle
 
 final class MimiqMenu: NSMenu {
+    private var viewModel: MimiqMenuViewModel
+    
     enum SimulatorPlaceholderState {
         case empty
         case fetching
@@ -145,11 +147,14 @@ final class MimiqMenu: NSMenu {
     
     init(statusItem: NSStatusItem) {
         defaultStatusItem = statusItem
+        viewModel = DefaultMimiqMenuViewModel()
         
         super.init(title: "Mimiq")
         
         delegate = self
         autoenablesItems = false
+        
+        viewModel.load()
     }
     
     required init(coder: NSCoder) {
