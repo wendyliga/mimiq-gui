@@ -29,6 +29,8 @@
 		86E76CDE24472DD400A36360 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E76CDC24472DCF00A36360 /* ServiceManagement.framework */; };
 		86F2EB36244302E40026C0D5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2EB35244302E40026C0D5 /* main.swift */; };
 		E501127F25471FE60065D786 /* MimiqMenu+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E501127E25471FE60065D786 /* MimiqMenu+ViewModel.swift */; };
+		E5499ACA254870C50001C557 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5499AC9254870C50001C557 /* Menu.swift */; };
+		E576D2AD254880180041E7C1 /* Tagged in Frameworks */ = {isa = PBXBuildFile; productRef = E576D2AC254880180041E7C1 /* Tagged */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -82,6 +84,7 @@
 		86E76CDC24472DCF00A36360 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		86F2EB35244302E40026C0D5 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E501127E25471FE60065D786 /* MimiqMenu+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MimiqMenu+ViewModel.swift"; sourceTree = "<group>"; };
+		E5499AC9254870C50001C557 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,7 @@
 			files = (
 				86E76CDE24472DD400A36360 /* ServiceManagement.framework in Frameworks */,
 				8690C2FB2443606C005B671E /* SwiftKit in Frameworks */,
+				E576D2AD254880180041E7C1 /* Tagged in Frameworks */,
 				8616F78824D69072003B0DD2 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,10 +183,19 @@
 		E501127D25471C030065D786 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				860F598B24438B35003722B3 /* MimiqMenu.swift */,
-				E501127E25471FE60065D786 /* MimiqMenu+ViewModel.swift */,
+				E5499AC8254870B60001C557 /* Menu */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E5499AC8254870B60001C557 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				860F598B24438B35003722B3 /* MimiqMenu.swift */,
+				E501127E25471FE60065D786 /* MimiqMenu+ViewModel.swift */,
+				E5499AC9254870C50001C557 /* Menu.swift */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +219,7 @@
 			name = mimiq;
 			packageProductDependencies = (
 				8690C2FA2443606C005B671E /* SwiftKit */,
+				E576D2AC254880180041E7C1 /* Tagged */,
 			);
 			productName = mimiq;
 			productReference = 86A74A2924423C74003F3C68 /* mimiq.app */;
@@ -257,6 +271,7 @@
 			mainGroup = 86A74A2024423C74003F3C68;
 			packageReferences = (
 				8690C2F92443606C005B671E /* XCRemoteSwiftPackageReference "swiftkit" */,
+				E576D2AB254880180041E7C1 /* XCRemoteSwiftPackageReference "swift-tagged" */,
 			);
 			productRefGroup = 86A74A2A24423C74003F3C68 /* Products */;
 			projectDirPath = "";
@@ -320,6 +335,7 @@
 				86C0CF16244452230052D963 /* PreferencesViewController.swift in Sources */,
 				E501127F25471FE60065D786 /* MimiqMenu+ViewModel.swift in Sources */,
 				860F598C24438B35003722B3 /* MimiqMenu.swift in Sources */,
+				E5499ACA254870C50001C557 /* Menu.swift in Sources */,
 				86C0CF1224438FC80052D963 /* MimiqProcess.swift in Sources */,
 				86A74A2D24423C74003F3C68 /* AppDelegate.swift in Sources */,
 				86BF3A212444BFDE007DBE15 /* NSImage+Extension.swift in Sources */,
@@ -600,6 +616,14 @@
 				minimumVersion = 2.0.1;
 			};
 		};
+		E576D2AB254880180041E7C1 /* XCRemoteSwiftPackageReference "swift-tagged" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-tagged";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -607,6 +631,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8690C2F92443606C005B671E /* XCRemoteSwiftPackageReference "swiftkit" */;
 			productName = SwiftKit;
+		};
+		E576D2AC254880180041E7C1 /* Tagged */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E576D2AB254880180041E7C1 /* XCRemoteSwiftPackageReference "swift-tagged" */;
+			productName = Tagged;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

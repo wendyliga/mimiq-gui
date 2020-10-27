@@ -13,17 +13,26 @@ protocol MimiqMenuViewModelInput {
 }
 
 protocol MimiqMenuViewModelOutput {
-    var menus: ([NSMenuItem]) -> Void { get }
+    var menus: ([Menu]) -> Void { get set } 
 }
 
 typealias MimiqMenuViewModel = MimiqMenuViewModelInput & MimiqMenuViewModelOutput
 
 final class DefaultMimiqMenuViewModel: MimiqMenuViewModel {
-    var menus: (_ menus: [NSMenuItem]) -> Void = { _ in}
+    var menus: (_ menus: [Menu]) -> Void = { _ in}
     
     init() {}
     
     func load() {
-        menus([])
+        let _menus: [Menu] = [
+            .availableSimulatorTitle,
+            .separator,
+            .checkForUpdate,
+            .preferences,
+            .separator,
+            .quit
+        ]
+        
+        menus(_menus)
     }
 }
