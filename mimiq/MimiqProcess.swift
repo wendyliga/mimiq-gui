@@ -7,27 +7,7 @@
 //
 
 import Foundation
-
-struct Simulator: Decodable {
-    let udid: UUID
-    let name: String
-    
-    enum CodingKeys: String, CodingKey {
-        case udid, name
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        let rawUDID = try container.decode(String.self, forKey: .udid)
-        guard let udid = UUID(uuidString: rawUDID) else {
-            fatalError("Failed to initialize UUID, rawData \(rawUDID)")
-        }
-        
-        self.udid = udid
-        name = try container.decode(String.self, forKey: .name)
-    }
-}
+import mimiq_core
 
 final class MimiqRecordProcess {
     var process: Process?

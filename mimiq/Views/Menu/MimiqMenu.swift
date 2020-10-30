@@ -147,7 +147,7 @@ final class MimiqMenu: NSMenu {
     
     init(statusItem: NSStatusItem) {
         defaultStatusItem = statusItem
-        viewModel = DefaultMimiqMenuViewModel()
+        viewModel = DefaultMimiqMenuViewModel(environment: .live)
         
         super.init(title: "Mimiq")
         
@@ -166,6 +166,10 @@ final class MimiqMenu: NSMenu {
     
     private func bindViewModel() {
         viewModel.menus = { [unowned self] menus in
+            // TODO: apply diffing for neccessary update only
+            // remove previous menu
+            removeAllItems()
+            
             menus.forEach { menu in
                 let nsMenuItem = menu.nsMenuItem
                 nsMenuItem.target = self
@@ -177,10 +181,14 @@ final class MimiqMenu: NSMenu {
         }
     }
     
-    private func selectorFor(_ menuId: Menu.ID) -> Selector? {
+    private func selectorFor(_ menuId: MenuItem.ID) -> Selector? {
         switch menuId {
-        case Menu.preferences.id:
+        case MenuItem.preferences.id:
             return #selector(openPreferences)
+        case MenuItem.checkForUpdate.id:
+            return #selector(checkForUpdate)
+        case MenuItem.quit.id:
+            return #selector(quitApp)
         default:
             return nil
         }
@@ -232,17 +240,17 @@ final class MimiqMenu: NSMenu {
         let window = PreferencesWindowController()
         window.showWindow(NSApp)
     }
-//
-//    @objc
-//    func checkForUpdate() {
-//        let updater = SUUpdater()
-//        updater.checkForUpdates(self)
-//    }
-//
-//    @objc
-//    func quitApp() {
-//        NSApp.terminate(self)
-//    }
+
+    @objc
+    func checkForUpdate() {
+        let updater = SUUpdater()
+        updater.checkForUpdates(self)
+    }
+
+    @objc
+    func quitApp() {
+        NSApp.terminate(self)
+    }
 //
 //    func refreshLayout() {
 //        removeAllItems()
@@ -290,27 +298,12 @@ final class MimiqMenu: NSMenu {
 //        simulatorPlaceholderState(.fetching)
 //        refreshLayout()
 //
-//        DispatchQueue.global(qos: .background).async { [weak self] in
-//            guard let self = self else { return }
-//
-//            self.latestSimulator = MimiqProcess.shared.simulatorList()
-//
-//            DispatchQueue.main.async { [weak self] in
-//                guard !(self?.simulatorChild ?? []).isEmpty else {
-//                    self?.simulatorPlaceholderState(.empty)
-//                    self?.refreshLayout()
-//                    return
-//                }
-//
-//                self?.simulatorPlaceholderState(.exist)
-//                self?.refreshLayout()
-//            }
-//        }
+        
 //    }
 }
 
 extension MimiqMenu: NSMenuDelegate {
     func menuWillOpen(_ menu: NSMenu) {
-//        fetchSimulator()
+        viewModel.menuWillOpen()
     }
 }
