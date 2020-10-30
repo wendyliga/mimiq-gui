@@ -9,26 +9,17 @@
 import Cocoa
 import mimiq_core
 
-struct MimiqMenuEnvironment {
-    typealias LoadSimulatorCompletion = ([Simulator]) -> Void
-    var loadSimulator: (_ simulators: @escaping LoadSimulatorCompletion) -> Void
-    
-    static var live: Self {
-        MimiqMenuEnvironment(loadSimulator: { completion in
-            DispatchQueue.global(qos: .background).async {
-                let latestSimulators = MimiqProcess.shared.simulatorList()
-
-                DispatchQueue.main.async {
-                    completion(latestSimulators)
-                }
-            }
-        })
-    }
+enum RecordType: String {
+    case gif
+    case mov
+    case mp4
 }
 
 protocol MimiqMenuViewModelInput {
     func load()
     func menuWillOpen()
+    func record(_ type: RecordType, simulatorId: Simulator.ID)
+    func stopRecording()
 }
 
 protocol MimiqMenuViewModelOutput {
@@ -38,17 +29,21 @@ protocol MimiqMenuViewModelOutput {
 typealias MimiqMenuViewModel = MimiqMenuViewModelInput & MimiqMenuViewModelOutput
 
 final class DefaultMimiqMenuViewModel: MimiqMenuViewModel {
-    // values
-    let environment: MimiqMenuEnvironment
+    // MARK: - Values
     
-    // output
+    private let environment: MimiqMenuEnvironment
+    private var currentMenus: IdentifiedArrayOf<MenuItem> = []
+    
+    // MARK: - Output
+    
     var menus: (_ menus: IdentifiedArrayOf<MenuItem>) -> Void = { _ in}
     
     init(environment: MimiqMenuEnvironment) {
         self.environment = environment
     }
     
-    // input
+    // MARK: - Input
+    
     func load() {
         refreshMenu()
     }
@@ -56,18 +51,22 @@ final class DefaultMimiqMenuViewModel: MimiqMenuViewModel {
     func menuWillOpen() {
         refreshMenu()
     }
-}
-
-extension DefaultMimiqMenuViewModel {
-    func refreshMenu() {
-        var _menus: IdentifiedArrayOf<MenuItem> = []
-        
+    
+    func record(_ type: RecordType, simulatorId: Simulator.ID) {
+        environment.recording(type, simulatorId)
+    }
+    
+    func stopRecording() {
+        environment.stopRecording()
+    }
+    
+    private func refreshMenu() {
         func updateMenu() {
-            menus(_menus)
+            menus(currentMenus)
         }
         
         fetch_initial_menu: do {
-            _menus = [
+            currentMenus = [
                 .currentRecordingTitle,
                 .emptyRecording,
                 .separator,
@@ -86,10 +85,10 @@ extension DefaultMimiqMenuViewModel {
         fetch_simulators_menu: do {
             func addFetchingStatus() {
                 // remove none status if available
-                _menus.safelyRemove(id: MenuItem.emptySimulator.id)
+                currentMenus.safelyRemove(id: MenuItem.emptySimulator.id)
                 
-                let simulatorMenuTitleIndex = _menus.firstIndex(where: { $0.id == MenuItem.availableSimulatorTitle.id })!
-                _menus.insert(.fetchingSimulatorStatus, at: simulatorMenuTitleIndex + 1)
+                let simulatorMenuTitleIndex = currentMenus.firstIndex(where: { $0.id == MenuItem.availableSimulatorTitle.id })!
+                currentMenus.insert(.fetchingSimulatorStatus, at: simulatorMenuTitleIndex + 1)
                 
                 // apply update
                 updateMenu()
@@ -97,14 +96,14 @@ extension DefaultMimiqMenuViewModel {
             
             func addSimulatorMenuToMainMenu(_ simulatorMenus: IdentifiedArrayOf<MenuItem>) {
                 // remove fetching status if available
-                _menus.safelyRemove(id: MenuItem.fetchingSimulatorStatus.id)
+                currentMenus.safelyRemove(id: MenuItem.fetchingSimulatorStatus.id)
                 
                 // remove none status if available
-                _menus.safelyRemove(id: MenuItem.emptySimulator.id)
+                currentMenus.safelyRemove(id: MenuItem.emptySimulator.id)
                 
                 // insert simulators menu below section title
-                let simulatorMenuTitleIndex = _menus.firstIndex(where: { $0.id == MenuItem.availableSimulatorTitle.id })!
-                _menus.insert(contentsOf: simulatorMenus, at: simulatorMenuTitleIndex + 1)
+                let simulatorMenuTitleIndex = currentMenus.firstIndex(where: { $0.id == MenuItem.availableSimulatorTitle.id })!
+                currentMenus.insert(contentsOf: simulatorMenus, at: simulatorMenuTitleIndex + 1)
                 
                 // apply update
                 updateMenu()
@@ -124,7 +123,9 @@ extension DefaultMimiqMenuViewModel {
                         
                         var menu = element.menuItem(needUDID: needUDID)
                         menu.subMenuItems = [
-                            MenuItem.recordGIF(for: element.id)
+                            MenuItem.recordGIF(for: element.id),
+                            MenuItem.recordMov(for: element.id),
+                            MenuItem.recordMp4(for: element.id)
                         ]
                         
                         return menu

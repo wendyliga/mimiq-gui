@@ -7,59 +7,11 @@
 //
 
 import Cocoa
+import mimiq_core
 import Sparkle
 
 final class MimiqMenu: NSMenu {
     private var viewModel: MimiqMenuViewModel
-    
-    enum SimulatorPlaceholderState {
-        case empty
-        case fetching
-        case exist
-    }
-    
-    enum RecordingState {
-        case none
-        case recording(title: String)
-        case processing
-    }
-    
-    // MARK: - Menu Item
-    
-//    let currentRecordingTitleMenuItem: NSMenuItem = {
-//        let item = NSMenuItem()
-//        item.title = "Current Recording"
-//        item.isEnabled = false
-//        
-//        return item
-//    }()
-//    
-//    lazy var currentRecordingChildMenuItem: NSMenuItem = { [weak self] in
-//        let item = NSMenuItem()
-//        item.title = "iPhone 8 - Stop Recording"
-//        item.isHidden = true
-//        item.action = #selector(stopRecord)
-//        item.target = self
-//        item.keyEquivalent = "+"
-//        
-//        return item
-//    }()
-//    
-//    let simulatorTitleMenuItem: NSMenuItem = {
-//        let item = NSMenuItem()
-//        item.title = "Available Simulators"
-//        item.isEnabled = false
-//        
-//        return item
-//    }()
-//    
-//    let simulatorPlaceholderChildMenuItem: NSMenuItem = {
-//        let item = NSMenuItem()
-//        item.title = "None"
-//        item.isEnabled = false
-//        
-//        return item
-//    }()
     
     /**
      Simulator Menu Item
@@ -85,69 +37,15 @@ final class MimiqMenu: NSMenu {
 //        }
 //    }
     
-//    lazy var preferencesMenuItem: NSMenuItem = { [weak self] in
-//        let item = NSMenuItem()
-//        item.title = "Preferences"
-//        item.action = #selector(openPreferences)
-//        item.target = self
-//        item.keyEquivalent = ","
-//        
-//        return item
-//    }()
-//    
-//    lazy var checkForUpdateItem: NSMenuItem = { [weak self] in
-//        let item = NSMenuItem()
-//        item.title = "Check for Update"
-//        item.action = #selector(checkForUpdate)
-//        item.target = self
-//        
-//        return item
-//    }()
-//    
-//    lazy var exitMenuItem: NSMenuItem = { [weak self] in
-//        let item = NSMenuItem()
-//        item.title = "Quit"
-//        item.action = #selector(quitApp)
-//        item.target = self
-//        item.keyEquivalent = "q"
-//        
-//        return item
-//    }()
-    
-//    lazy var topMenu = [currentRecordingTitleMenuItem,
-//                   currentRecordingChildMenuItem,
-//                   NSMenuItem.separator(),
-//                   simulatorTitleMenuItem,
-//                   simulatorPlaceholderChildMenuItem]
-//
-//    lazy var bottomMenu = [NSMenuItem.separator(),
-//                           checkForUpdateItem,
-//                           preferencesMenuItem,
-//                           NSMenuItem.separator(),
-//                           exitMenuItem]
-    
-    /**
-     All Menu Item
-     */
-//    var menuChild: [NSMenuItem] {
-//        return topMenu + simulatorChild + bottomMenu
-//    }
-    
     // MARK: - Values
     
-//    var selectedSimulatorToRecord: Simulator?
-    
-//    var latestSimulator = [Simulator]()
-    
     let defaultStatusItem: NSStatusItem!
-    
-//    let mimiqRecordProcess = MimiqRecordProcess()
     
     // MARK: - Life Cycle
     
     init(statusItem: NSStatusItem) {
         defaultStatusItem = statusItem
-        viewModel = DefaultMimiqMenuViewModel(environment: .live)
+        viewModel = DefaultMimiqMenuViewModel(environment: .init())
         
         super.init(title: "Mimiq")
         
@@ -164,6 +62,9 @@ final class MimiqMenu: NSMenu {
     
     // MARK: - Function
     
+    /**
+     Bind view model to UI
+     */
     private func bindViewModel() {
         viewModel.menus = { [unowned self] menus in
             // TODO: apply diffing for neccessary update only
@@ -171,17 +72,62 @@ final class MimiqMenu: NSMenu {
             removeAllItems()
             
             menus.forEach { menu in
-                let nsMenuItem = menu.nsMenuItem
-                nsMenuItem.target = self
-                nsMenuItem.action = self.selectorFor(menu.id)
-                
-                // add to menu
-                self.addItem(nsMenuItem)
+                self.addItem(nsMenuItemWithSelectorFor(menu))
             }
         }
     }
     
+    /**
+     Generate `NSMenuItem` from value type `MenuItem`.
+     This function will also set the respective `#selector`
+     
+     - Parameter menuItem: `MenuItem`
+     - Returns: generated `NSMenuItem` with alocated `#selector`
+     */
+    private func nsMenuItemWithSelectorFor(_ menuItem: MenuItem) -> NSMenuItem {
+        let nsMenuItem = menuItem.nsMenuItem
+        nsMenuItem.target = self
+        nsMenuItem.action = self.selectorFor(menuItem.id)
+        nsMenuItem.submenu = { () -> NSMenu? in
+            var subMenu: NSMenu? = nil
+            
+            if !menuItem.subMenuItems.isEmpty {
+                subMenu = NSMenu()
+                
+                menuItem.subMenuItems.forEach { menuItem in
+                    // recursive set subitem nsmenu with selector
+                    let nsMenuItem = self.nsMenuItemWithSelectorFor(menuItem)
+                    subMenu?.addItem(nsMenuItem)
+                }
+            }
+            
+            return subMenu
+        }()
+        
+        return nsMenuItem
+    }
+    
+    /**
+     Get appropriate `#selector` for `MenuItem`
+     
+     - Parameter menuId: `MenuItem` `ID`
+     - Returns: a selector for MenuItem
+     */
     private func selectorFor(_ menuId: MenuItem.ID) -> Selector? {
+        // handle record gif menu id,
+        // because the menu id contains simulator UUID, so can pass uuid simulator to selector, only check if menu id contains prefix menu
+        if menuId.rawValue.contains(MenuItem.prefixRecordGifMenu) {
+            return #selector(recordGIF)
+        }
+        
+        if menuId.rawValue.contains(MenuItem.prefixRecordMovMenu) {
+            return #selector(recordMov)
+        }
+        
+        if menuId.rawValue.contains(MenuItem.prefixRecordMp4Menu) {
+            return #selector(recordMp4)
+        }
+        
         switch menuId {
         case MenuItem.preferences.id:
             return #selector(openPreferences)
@@ -235,6 +181,39 @@ final class MimiqMenu: NSMenu {
 //        }
 //    }
 //
+    
+    /**
+     Extract Simulator UUID from NSMenuItem identifier, set only on record menu item
+     
+     - Parameter menuItem: `NSMenuItem` from sender `#selector`
+     - Returns: Optional Simulator ID
+     */
+    private func getSimulatorIdFrom(_ menuItem: NSMenuItem?) -> Simulator.ID? {
+        var menuId = menuItem?.identifier?.rawValue
+        menuId?.removeFirst(MenuItem.prefixRecordGifMenu.count)
+        
+        guard let uuid = UUID(uuidString: menuId ?? "") else { return nil }
+        return Simulator.ID(rawValue: uuid)
+    }
+    
+    @objc
+    private func recordGIF(_ sender: NSMenuItem?) {
+        guard let simulatorId = getSimulatorIdFrom(sender) else { return }
+        viewModel.record(.gif, simulatorId: simulatorId)
+    }
+    
+    @objc
+    func recordMov(_ sender: NSMenuItem?) {
+        guard let simulatorId = getSimulatorIdFrom(sender) else { return }
+        viewModel.record(.mov, simulatorId: simulatorId)
+    }
+    
+    @objc
+    func recordMp4(_ sender: NSMenuItem?) {
+        guard let simulatorId = getSimulatorIdFrom(sender) else { return }
+        viewModel.record(.mp4, simulatorId: simulatorId)
+    }
+    
     @objc
     func openPreferences() {
         let window = PreferencesWindowController()
@@ -251,55 +230,6 @@ final class MimiqMenu: NSMenu {
     func quitApp() {
         NSApp.terminate(self)
     }
-//
-//    func refreshLayout() {
-//        removeAllItems()
-//        menuChild.forEach(addItem)
-//    }
-    
-//    private func simulatorPlaceholderState(_ state: SimulatorPlaceholderState) {
-//        switch state {
-//        case .exist:
-//            simulatorPlaceholderChildMenuItem.isHidden = true
-//        case .empty:
-//            simulatorPlaceholderChildMenuItem.isHidden = false
-//            simulatorPlaceholderChildMenuItem.title = "None"
-//        case .fetching:
-//            simulatorPlaceholderChildMenuItem.isHidden = false
-//            simulatorPlaceholderChildMenuItem.title = "Fetching..."
-//        }
-//    }
-    
-//    private func recordingState(_ state: RecordingState) {
-//        switch state {
-//        case .none:
-//            currentRecordingChildMenuItem.isHidden = true
-//            selectedSimulatorToRecord = nil
-//            defaultStatusItem.button?.title = ""
-//        case let .recording(title):
-//            currentRecordingChildMenuItem.isHidden = false
-//            currentRecordingChildMenuItem.isEnabled = true
-//            currentRecordingChildMenuItem.title = "Stop Recording " + title
-//            defaultStatusItem.button?.title = " Recording \(title)"
-//        case .processing:
-//            currentRecordingChildMenuItem.isHidden = false
-//            currentRecordingChildMenuItem.isEnabled = false
-//            currentRecordingChildMenuItem.title = "Processing"
-//            defaultStatusItem.button?.title = "Processing"
-//        }
-//    }
-    
-//    @objc
-//    func fetchSimulator() {
-//        // remove previous simulator
-//        latestSimulator.removeAll()
-//
-//        // set fetching status
-//        simulatorPlaceholderState(.fetching)
-//        refreshLayout()
-//
-        
-//    }
 }
 
 extension MimiqMenu: NSMenuDelegate {

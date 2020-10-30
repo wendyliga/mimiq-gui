@@ -1,5 +1,5 @@
 //
-//  MimiqProcess.swift
+//  RecordProcess.swift
 //  mimiq
 //
 //  Created by Wendy Liga on 12/04/20.
@@ -32,14 +32,19 @@ final class MimiqRecordProcess {
         process?.launchPath = launchPath
     }
     
-    func startRecord(_ udid: String) {
+    func startRecord(_ simulatorId: Simulator.ID, type: RecordType) {
         initProcess()
         
         guard let ffmpegPath = Bundle.main.resourcePath else {
             fatalError("Unable to find bundle resource path")
         }
         
-        process?.arguments = ["--udid", udid, "--path", UserDefaults.standard.string(forKey: "generate_gif_path") ?? "\(NSHomeDirectory())/Desktop", "--custom-ffmpeg", ffmpegPath]
+        process?.arguments = [
+            "--udid", simulatorId.rawValue.uuidString,
+            "--output", type.rawValue,
+            "--path", UserDefaults.standard.string(forKey: "generate_gif_path") ?? "\(NSHomeDirectory())/Desktop",
+            "--custom-ffmpeg", ffmpegPath
+        ]
         process?.launch()
     }
     
@@ -67,44 +72,5 @@ final class MimiqRecordProcess {
                 completion(self?.process?.terminationStatus, output, errorOuput)
             }
         }
-    }
-}
-
-final class MimiqProcess {
-    static let shared = MimiqProcess()
-    
-    var process: Process?
-    var stdoutPipe: Pipe?
-    var stderrPipe: Pipe?
-    
-    func initProcess() {
-        process = Process()
-        stdoutPipe = Pipe()
-        stderrPipe = Pipe()
-        
-        process?.standardOutput = stdoutPipe
-        process?.standardError = stderrPipe
-        
-        guard let launchPath = Bundle.main.path(forResource: "mimiq", ofType: nil) else {
-            fatalError("Unable to find mimiq executable")
-        }
-        
-        process?.launchPath = launchPath
-    }
-    
-    func simulatorList() -> [Simulator] {
-        initProcess()
-        process?.arguments = ["list", "--json"]
-        process?.launch()
-        self.process?.waitUntilExit()
-        
-        guard
-            let data = stdoutPipe?.fileHandleForReading.readDataToEndOfFile(),
-            let output = String(data: data, encoding: String.Encoding.utf8)
-        else {
-            return []
-        }
-        
-        return (try? JSONDecoder().decode([Simulator].self, from: output.data(using: .utf8)!)) ?? []
     }
 }

@@ -63,15 +63,44 @@ extension MenuItem {
 }
 
 extension MenuItem {
-    static var recordGIFMenuPrefix: String {
+    static var prefixRecordGifMenu: String {
         "record-gif-"
     }
+    
+    static var prefixRecordMovMenu: String {
+        "record-mov-"
+    }
+    
+    static var prefixRecordMp4Menu: String {
+        "record-mp4-"
+    }
+    
     static func recordGIF(for simulatorId: Simulator.ID) -> Self {
         .init(
-            id: MenuItem.ID(rawValue: recordGIFMenuPrefix + String(simulatorId.rawValue.uuidString)),
+            id: MenuItem.ID(rawValue: prefixRecordGifMenu + String(simulatorId.rawValue.uuidString)),
             title: "Record GIF",
             isEnabled: true,
-            keyEquivalent: "g",
+            keyEquivalent: "1",
+            subMenuItems: []
+        )
+    }
+    
+    static func recordMov(for simulatorId: Simulator.ID) -> Self {
+        .init(
+            id: MenuItem.ID(rawValue: prefixRecordMovMenu + String(simulatorId.rawValue.uuidString)),
+            title: "Record Mov",
+            isEnabled: true,
+            keyEquivalent: "2",
+            subMenuItems: []
+        )
+    }
+    
+    static func recordMp4(for simulatorId: Simulator.ID) -> Self {
+        .init(
+            id: MenuItem.ID(rawValue: prefixRecordMp4Menu + String(simulatorId.rawValue.uuidString)),
+            title: "Record Mp4",
+            isEnabled: true,
+            keyEquivalent: "3",
             subMenuItems: []
         )
     }
@@ -86,22 +115,10 @@ extension MenuItem {
         
         // handle default menu
         let menu = NSMenuItem()
+        menu.identifier = NSUserInterfaceItemIdentifier(id.rawValue)
         menu.title = title
         menu.isEnabled = isEnabled
         menu.keyEquivalent = keyEquivalent ?? ""
-        menu.submenu = { () -> NSMenu? in
-            var subMenu: NSMenu? = nil
-            
-            if !subMenuItems.isEmpty {
-                subMenu = NSMenu()
-                
-                subMenuItems.forEach { menuItem in
-                    subMenu?.addItem(menuItem.nsMenuItem)
-                }
-            }
-            
-            return subMenu
-        }()
         
         return menu
     }
