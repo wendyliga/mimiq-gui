@@ -21,13 +21,21 @@
 		86BF3A1D2444B59A007DBE15 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BF3A1C2444B59A007DBE15 /* AboutViewController.swift */; };
 		86BF3A1F2444B5AB007DBE15 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BF3A1E2444B5AB007DBE15 /* GeneralViewController.swift */; };
 		86BF3A212444BFDE007DBE15 /* NSImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BF3A202444BFDE007DBE15 /* NSImage+Extension.swift */; };
-		86C0CF1224438FC80052D963 /* MimiqProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0CF1124438FC80052D963 /* MimiqProcess.swift */; };
+		86C0CF1224438FC80052D963 /* RecordProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0CF1124438FC80052D963 /* RecordProcess.swift */; };
 		86C0CF16244452230052D963 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0CF15244452230052D963 /* PreferencesViewController.swift */; };
 		86CD6D4B244756F00021AA7D /* mimiqHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 86ADFC042447550A0042A8B4 /* mimiqHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		86E76CC2244728D200A36360 /* ffmpeg in Resources */ = {isa = PBXBuildFile; fileRef = 86E76CC1244728D200A36360 /* ffmpeg */; };
 		86E76CC42447291000A36360 /* mimiq in Resources */ = {isa = PBXBuildFile; fileRef = 86E76CC32447291000A36360 /* mimiq */; };
 		86E76CDE24472DD400A36360 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86E76CDC24472DCF00A36360 /* ServiceManagement.framework */; };
 		86F2EB36244302E40026C0D5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F2EB35244302E40026C0D5 /* main.swift */; };
+		E501127F25471FE60065D786 /* MimiqMenu+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E501127E25471FE60065D786 /* MimiqMenu+ViewModel.swift */; };
+		E5499ACA254870C50001C557 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5499AC9254870C50001C557 /* Menu.swift */; };
+		E576D2AD254880180041E7C1 /* Tagged in Frameworks */ = {isa = PBXBuildFile; productRef = E576D2AC254880180041E7C1 /* Tagged */; };
+		E58008AB254C02CA00EB1F9B /* IdentifiedArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58008AA254C02CA00EB1F9B /* IdentifiedArray.swift */; };
+		E58008AF254C049900EB1F9B /* MimiqCore in Frameworks */ = {isa = PBXBuildFile; productRef = E58008AE254C049900EB1F9B /* MimiqCore */; };
+		E58008B2254C04B200EB1F9B /* Simulator+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58008B1254C04B200EB1F9B /* Simulator+Extension.swift */; };
+		E58008B9254C141B00EB1F9B /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58008B8254C141B00EB1F9B /* Process.swift */; };
+		E5E12643254C1D3D002699C2 /* MimiqMenuEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E1263F254C1D14002699C2 /* MimiqMenuEnvironment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -74,12 +82,18 @@
 		86BF3A1C2444B59A007DBE15 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		86BF3A1E2444B5AB007DBE15 /* GeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
 		86BF3A202444BFDE007DBE15 /* NSImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extension.swift"; sourceTree = "<group>"; };
-		86C0CF1124438FC80052D963 /* MimiqProcess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MimiqProcess.swift; sourceTree = "<group>"; };
+		86C0CF1124438FC80052D963 /* RecordProcess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordProcess.swift; sourceTree = "<group>"; };
 		86C0CF15244452230052D963 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		86E76CC1244728D200A36360 /* ffmpeg */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = ffmpeg; sourceTree = "<group>"; };
 		86E76CC32447291000A36360 /* mimiq */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = mimiq; sourceTree = "<group>"; };
 		86E76CDC24472DCF00A36360 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		86F2EB35244302E40026C0D5 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		E501127E25471FE60065D786 /* MimiqMenu+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MimiqMenu+ViewModel.swift"; sourceTree = "<group>"; };
+		E5499AC9254870C50001C557 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		E58008AA254C02CA00EB1F9B /* IdentifiedArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiedArray.swift; sourceTree = "<group>"; };
+		E58008B1254C04B200EB1F9B /* Simulator+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Simulator+Extension.swift"; sourceTree = "<group>"; };
+		E58008B8254C141B00EB1F9B /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
+		E5E1263F254C1D14002699C2 /* MimiqMenuEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MimiqMenuEnvironment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +103,9 @@
 			files = (
 				86E76CDE24472DD400A36360 /* ServiceManagement.framework in Frameworks */,
 				8690C2FB2443606C005B671E /* SwiftKit in Frameworks */,
+				E576D2AD254880180041E7C1 /* Tagged in Frameworks */,
 				8616F78824D69072003B0DD2 /* Sparkle.framework in Frameworks */,
+				E58008AF254C049900EB1F9B /* MimiqCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,20 +150,16 @@
 		86A74A2B24423C74003F3C68 /* mimiq */ = {
 			isa = PBXGroup;
 			children = (
+				E58008B5254C13E000EB1F9B /* Process */,
+				E58008A9254C02C000EB1F9B /* Helper */,
+				E501127D25471C030065D786 /* Views */,
 				869515D22448139B0063C709 /* mimiqRelease.entitlements */,
 				86E76CC1244728D200A36360 /* ffmpeg */,
 				86E76CC32447291000A36360 /* mimiq */,
 				86A74A3624423C76003F3C68 /* mimiq.entitlements */,
 				86A74A3524423C76003F3C68 /* Info.plist */,
-				86BF3A1C2444B59A007DBE15 /* AboutViewController.swift */,
 				86A74A2C24423C74003F3C68 /* AppDelegate.swift */,
-				86BF3A1E2444B5AB007DBE15 /* GeneralViewController.swift */,
 				86F2EB35244302E40026C0D5 /* main.swift */,
-				860F598B24438B35003722B3 /* MimiqMenu.swift */,
-				86C0CF1124438FC80052D963 /* MimiqProcess.swift */,
-				86BF3A202444BFDE007DBE15 /* NSImage+Extension.swift */,
-				86C0CF15244452230052D963 /* PreferencesViewController.swift */,
-				868730FE2446257E003620C9 /* UserDefaultsKey.swift */,
 				86A74A3024423C76003F3C68 /* Assets.xcassets */,
 			);
 			path = mimiq;
@@ -174,6 +186,48 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E501127D25471C030065D786 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				86C0CF15244452230052D963 /* PreferencesViewController.swift */,
+				86BF3A1C2444B59A007DBE15 /* AboutViewController.swift */,
+				86BF3A1E2444B5AB007DBE15 /* GeneralViewController.swift */,
+				E5499AC8254870B60001C557 /* Menu */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E5499AC8254870B60001C557 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				860F598B24438B35003722B3 /* MimiqMenu.swift */,
+				E501127E25471FE60065D786 /* MimiqMenu+ViewModel.swift */,
+				E5499AC9254870C50001C557 /* Menu.swift */,
+				E5E1263F254C1D14002699C2 /* MimiqMenuEnvironment.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		E58008A9254C02C000EB1F9B /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				86BF3A202444BFDE007DBE15 /* NSImage+Extension.swift */,
+				868730FE2446257E003620C9 /* UserDefaultsKey.swift */,
+				E58008AA254C02CA00EB1F9B /* IdentifiedArray.swift */,
+				E58008B1254C04B200EB1F9B /* Simulator+Extension.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		E58008B5254C13E000EB1F9B /* Process */ = {
+			isa = PBXGroup;
+			children = (
+				86C0CF1124438FC80052D963 /* RecordProcess.swift */,
+				E58008B8254C141B00EB1F9B /* Process.swift */,
+			);
+			path = Process;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -195,6 +249,8 @@
 			name = mimiq;
 			packageProductDependencies = (
 				8690C2FA2443606C005B671E /* SwiftKit */,
+				E576D2AC254880180041E7C1 /* Tagged */,
+				E58008AE254C049900EB1F9B /* MimiqCore */,
 			);
 			productName = mimiq;
 			productReference = 86A74A2924423C74003F3C68 /* mimiq.app */;
@@ -246,6 +302,8 @@
 			mainGroup = 86A74A2024423C74003F3C68;
 			packageReferences = (
 				8690C2F92443606C005B671E /* XCRemoteSwiftPackageReference "swiftkit" */,
+				E576D2AB254880180041E7C1 /* XCRemoteSwiftPackageReference "swift-tagged" */,
+				E58008AD254C049900EB1F9B /* XCRemoteSwiftPackageReference "mimiq" */,
 			);
 			productRefGroup = 86A74A2A24423C74003F3C68 /* Products */;
 			projectDirPath = "";
@@ -306,13 +364,19 @@
 			files = (
 				86BF3A1D2444B59A007DBE15 /* AboutViewController.swift in Sources */,
 				86BF3A1F2444B5AB007DBE15 /* GeneralViewController.swift in Sources */,
+				E58008B2254C04B200EB1F9B /* Simulator+Extension.swift in Sources */,
 				86C0CF16244452230052D963 /* PreferencesViewController.swift in Sources */,
+				E501127F25471FE60065D786 /* MimiqMenu+ViewModel.swift in Sources */,
+				E58008AB254C02CA00EB1F9B /* IdentifiedArray.swift in Sources */,
 				860F598C24438B35003722B3 /* MimiqMenu.swift in Sources */,
-				86C0CF1224438FC80052D963 /* MimiqProcess.swift in Sources */,
+				E5499ACA254870C50001C557 /* Menu.swift in Sources */,
+				86C0CF1224438FC80052D963 /* RecordProcess.swift in Sources */,
 				86A74A2D24423C74003F3C68 /* AppDelegate.swift in Sources */,
 				86BF3A212444BFDE007DBE15 /* NSImage+Extension.swift in Sources */,
+				E5E12643254C1D3D002699C2 /* MimiqMenuEnvironment.swift in Sources */,
 				868730FF2446257E003620C9 /* UserDefaultsKey.swift in Sources */,
 				86F2EB36244302E40026C0D5 /* main.swift in Sources */,
+				E58008B9254C141B00EB1F9B /* Process.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,6 +652,22 @@
 				minimumVersion = 2.0.1;
 			};
 		};
+		E576D2AB254880180041E7C1 /* XCRemoteSwiftPackageReference "swift-tagged" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-tagged";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
+		E58008AD254C049900EB1F9B /* XCRemoteSwiftPackageReference "mimiq" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/wendyliga/mimiq";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -595,6 +675,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8690C2F92443606C005B671E /* XCRemoteSwiftPackageReference "swiftkit" */;
 			productName = SwiftKit;
+		};
+		E576D2AC254880180041E7C1 /* Tagged */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E576D2AB254880180041E7C1 /* XCRemoteSwiftPackageReference "swift-tagged" */;
+			productName = Tagged;
+		};
+		E58008AE254C049900EB1F9B /* MimiqCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E58008AD254C049900EB1F9B /* XCRemoteSwiftPackageReference "mimiq" */;
+			productName = MimiqCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
